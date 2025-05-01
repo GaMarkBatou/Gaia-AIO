@@ -1,0 +1,125 @@
+
+div.BaseTableInner {
+	/*width: 690px!important;*/
+	width: 99%!important;
+	/*height: 200px!important; */
+	height: 100%!important;
+}
+div.BaseTableColHeaders {
+	/*width: 691px!important;*/
+	width: 100%!important;
+}
+div.BaseTableOuter {
+	/*width: 690px!important;*/
+	width: 99%!important;
+	/*height: auto!important; */
+	height: 100%!important;
+}
+div.TableInner {
+	/* width: 690px!important; */
+	width: 99%!important;
+	/*height: auto!important; */
+	height: unset!important;
+    bottom: 0px;
+}
+div.TableHdr {
+	/*width: 690px!important;*/
+	width: 99%!important;
+}
+table.TableHdr {
+	/*width: 690px!important;*/
+	width: 99%!important;
+}
+
+#WIN_0_536870939{
+	/* height: 100%!important; */
+	height: unset!important;
+	bottom: 35px;
+}
+
+#WIN_0_536870962, #WIN_0_536870945, #WIN_0_536870939, #WIN_0_536871874{
+	width: 99%!important;
+}
+
+#WIN_0_536871874, #WIN_0_536870945{
+	top: unset!important;
+    bottom: 5px!important;
+}
+
+
+#WIN_0_536906910{
+	left:auto!important;
+	right: 20px!important;
+	top: unset!important;
+    bottom: 10px!important;
+}
+
+#WIN_0_536870909{
+	left:auto!important;
+	right: 105px!important;
+	top: unset!important;
+    bottom: 10px!important;
+}
+
+#WIN_0_536870889{
+	left:auto!important;
+	right: 230px!important;
+	top: unset!important;
+    bottom: 10px!important;
+}
+
+#WIN_0_536870904, #WIN_0_536870905, #WIN_0_536870910{
+	top: unset!important;
+    bottom: 10px!important;
+}
+
+#WIN_0_536871856{
+	top: unset!important;
+    bottom: 10px!important;
+}
+	
+#WIN_0_536870896{
+	width: 99%!important;
+	background-color: rgb(223,51,106)!important;
+}
+
+#WIN_0_536871880{
+	left:auto!important;
+	right: 50px!important;
+}
+
+#WIN_0_536871864{
+	background-color: #ffffff!important;
+	width: 99%!important;
+	height: 140px!important;
+	z-index: 980!important;
+	bottom: 1px!important;
+	top: unset!important;
+	left: 1px!important;
+    margin-left: 5px;
+}
+
+#WIN_0_536870903, #WIN_0_536870899, #WIN_0_536885301, #WIN_0_536871873{
+	top: unset!important;
+	bottom: 5px;
+}
+
+#WIN_0_536871047{
+	top: unset!important;
+	left: 12px!important;
+	bottom: 30px;
+}
+
+#WIN_0_536870962{
+	height: 91%!important;
+}
+
+
+#WIN_0_536870901, #WIN_0_536870900{
+	z-index: 999!important;
+	bottom: 5px!important;
+	top: unset!important;
+}
+
+
+

@@ -1,0 +1,389 @@
+/* Monitor vision */
+@media (min-height: 600px) {
+/* Monitor vision */
+div.BaseTableInner {
+	/*width: 690px!important;*/
+	width: 100%!important;
+}
+div.BaseTableColHeaders {
+	/*width: 691px!important;*/
+	width: 100%!important;
+}
+div.BaseTableOuter {
+	/*width: 690px!important;*/
+	width: 100%!important;
+}
+div.TableInner {
+	/* width: 690px!important; */
+	width: 100%!important;
+}
+div.TableHdr {
+	/*width: 690px!important;*/
+	width: 100%!important;
+}
+#WIN_0_536871148{ /*notizen*/
+	width: 700px!important;
+	top: 48px!important;
+	height: auto!important;
+	bottom: 407px!important;
+}
+
+#WIN_0_536871792{ /*reader under notizen*/
+	top: auto!important;
+	height: 120px!important;
+	bottom: 284px!important;
+}
+
+#arid_WIN_0_536871792{ /*reader under notizen*/
+	width: 675px!important;
+	height: 120px!important;
+}
+
+#WIN_0_536871835{
+	background-color: #6bbaef!important;
+	/*#6bbaef - #fc3074*/
+	/*background-image: url("notizen.jpg")!important;*/
+	width: 722px!important;
+}
+
+/* engwtts */
+#surl{
+	width: 675px!important;
+	height: 120px!important;
+}
+#WIN_0_536871792{
+	width: 675px!important;
+}
+
+#WIN_0_536871792 > div{
+	width: 100%!important;
+	height: 120px!important;
+}
+
+/* engwtts */
+
+*{
+    font-family: 'Microsoft Sans Serif','MS Sans Serif'!important; 
+    font-size: 7pt!important;
+}
+/*
+body {
+  zoom: 125%;
+}
+*/
+div.a.btn.btn3d.expand{
+	left: 672px!important;
+}
+
+#WIN_0_536871792 a {
+    left: 682px!important;
+	height: 102px;
+}
+
+#WIN_0_536998662{
+	    width: 1180px!important;
+}
+
+#WIN_0_536998669, #WIN_0_536998663, #WIN_0_536998664, #WIN_0_536998665, #WIN_0_536998674, #WIN_0_536998671, #WIN_0_536998666, #WIN_0_536998667, #WIN_0_536998668, #WIN_0_536998672, #WIN_0_536998673{
+	width: 1180px!important;
+}
+
+#WIN_0_536998669 div.PageBody{
+	width: 1180px!important;
+}
+
+#WIN_0_536906910{
+	left: 1108px!important;
+	/* top: 553px!important; */
+	top: auto!important;
+	bottom: 10px!important;
+}
+
+#WIN_0_536871148 table.TableHdr{
+	width: 690px!important;
+	/* height: 135px!important; */
+}
+
+#WIN_0_536871148 div.TableInner { height: calc(100% - 18px)!important; }
+#WIN_0_536871148 div.BaseTableOuter { height: 100%!important; }
+#WIN_0_536871148 div.BaseTableInner { height: calc(100% - 18px)!important; }
+
+#arid_WIN_0_536871782{
+	width: 426px!important;
+}
+#WIN_0_536871782{
+	left: 488px!important;
+}
+
+#WIN_0_536871782 a {
+	left: 429px!important;
+}
+
+#WIN_0_536870642 {
+	left: 958px!important;
+}
+#reg_img_536870528{
+	width: 1202px!important;
+}
+
+#WIN_0_536871995{
+	width: 1192px!important;
+	height: 554px!important;
+	top: 23px!important;
+    left: 2px!important;
+}
+
+div.btnimgdiv{
+	width: 1202px!important;
+}
+
+#WIN_0_536871544,  #WIN_0_536871559, #WIN_0_536870716, #WIN_0_536871231, #WIN_0_536870859, #WIN_0_536870735, #WIN_0_536870661{
+	/* top: 298px!important; */
+	top: auto!important;
+	bottom: 262px!important;
+}
+
+/* englis wtts */
+#WIN_0_536872091{
+	/* top: 298px!important; */
+	top: auto!important;
+	bottom: 262px!important;
+}
+/* englis wtts */
+
+#WIN_0_536870905{
+	/*top: 299px!important;
+	top:min(286px 441px)!important;*/
+	top: auto!important;
+	bottom: 262px!important;
+}
+
+#WIN_0_536871062 {
+	background-color: #ffffff00!important;
+}
+
+#WIN_0_536870528{
+	    top: 0px!important;
+		left: 0px!important;
+		height: 100%!important; 
+		width: 1205px!important;
+		background-color: #ff0000!important;
+}
+
+#WIN_0_536871995{
+	height: calc(100% - 27px)!important; 
+}
+
+
+#WIN_0_536998662{
+	top: auto!important;
+	bottom: 5px!important;
+}
+
+#WIN_0_536870990{
+	
+/* height: auto!important; */
+	height: auto!important;
+    bottom: 310px!important;
+}
+
+ #arid_WIN_0_536870990{
+	 
+	/* height: 80px!important; 
+	height: auto!important;
+	bottom: 270px!important;*/
+	height: 100%!important;
+    /* bottom: 310px!important; */
+	
+}
+
+#WIN_0_536871229, #WIN_0_536872036, #WIN_0_536871994, #WIN_0_536871229, #WIN_0_536871994{
+	
+/* 	top: 285px!important; */
+	z-index: 999!important; 
+	top: auto!important;
+	bottom: 263px!important;
+}
+
+#WIN_0_536870561{
+	top: 295px!important;
+}
+
+#WIN_0_536870920, #WIN_0_536871835{
+	height: auto!important;
+	bottom: 257px!important;
+	/*height: 265px!important;*/
+}
+
+#WIN_0_536870924{
+	z-index: 999;
+}
+
+#Toolbar{
+	width: 100%!important;
+}
+
+#WIN_0_536870858{
+	    left: 1085px!important;
+}
+}
+/* Monitor vision */
+
+/* Notebook vision */
+@media (max-height: 600px) {
+	
+/* engwtts */
+#surl{
+	width: 675px!important;
+	height: 120px!important;
+}
+#WIN_0_536871792{
+	width: 670px!important;
+}
+
+#WIN_0_536871792 > div{
+	width: 100%!important;
+	height: 150px!important;
+}
+
+/* engwtts */
+
+  
+div.BaseTableInner {
+	/*width: 690px!important;*/
+	width: 100%!important;
+}
+div.BaseTableColHeaders {
+	/*width: 691px!important;*/
+	width: 100%!important;
+}
+div.BaseTableOuter {
+	/*width: 690px!important;*/
+	width: 100%!important;
+}
+div.TableInner {
+	/* width: 690px!important; */
+	width: 100%!important;
+}
+div.TableHdr {
+	/*width: 690px!important;*/
+	width: 100%!important;
+}
+#WIN_0_536871148{ /*notizen*/
+	width: 690px!important;
+	top: 48px!important;
+}
+
+#WIN_0_536871792{ /*reader under notizen*/
+	top: 253px!important;
+	height: 150px!important;
+}
+
+#arid_WIN_0_536871792{ /*reader under notizen*/
+	width: 667px!important;
+	height: 150px!important;
+}
+
+#WIN_0_536871835{
+	background-color: #6bbaef!important;
+	/*#6bbaef - #fc3074*/
+	/*background-image: url("notizen.jpg")!important;*/
+	width: 722px!important;
+}
+
+*{
+    font-family: 'Microsoft Sans Serif','MS Sans Serif'!important; 
+    font-size: 7pt!important;
+}
+/*
+body {
+  zoom: 125%;
+}
+*/
+div.a.btn.btn3d.expand{
+	left: 672px!important;
+}
+
+#WIN_0_536871792 a {
+    left: 672px!important;
+	height: 102px;
+}
+
+#WIN_0_536998662{
+	    width: 1180px!important;
+}
+
+#WIN_0_536998669, #WIN_0_536998663, #WIN_0_536998664, #WIN_0_536998665, #WIN_0_536998674, #WIN_0_536998671, #WIN_0_536998666, #WIN_0_536998667, #WIN_0_536998668, #WIN_0_536998672, #WIN_0_536998673{
+	width: 1180px!important;
+}
+
+#WIN_0_536998669 div.PageBody{
+	width: 1180px!important;
+}
+
+#WIN_0_536906910{
+	left: 1108px!important;
+	top: 665px!important;
+}
+
+#WIN_0_536871148 table.TableHdr{
+	width: 690px!important;
+}
+
+#arid_WIN_0_536871782{
+	width: 426px!important;
+}
+#WIN_0_536871782{
+	left: 488px!important;
+}
+
+#WIN_0_536871782 a {
+	left: 429px!important;
+}
+
+#WIN_0_536870642 {
+	left: 958px!important;
+}
+#reg_img_536870528{
+	width: 1202px!important;
+}
+
+#WIN_0_536871995{
+	width: 1195px!important;
+}
+
+div.btnimgdiv{
+	width: 1202px!important;
+}
+
+#WIN_0_536871544,  #WIN_0_536871559, #WIN_0_536870716, #WIN_0_536871231, #WIN_0_536870859, #WIN_0_536870735, #WIN_0_536870661, #WIN_0_536870905{
+	top: 4ö5px!important;
+}
+
+#WIN_0_536871062 {
+	background-color: #ffffff00!important;
+}
+
+#WIN_0_536870528{
+	    top: 0px!important;
+		left: 0px!important;
+		height: 575px!important;
+		width: 1205px!important;
+		background-color: #ff0000!important;
+}
+  
+  
+}
+/* Notebook vision */
+
+/* itt lakoznak a sarkanyok,  ha ezt a reszt aktivalod + 10es prodt es +3% quality ad! */
+/* https://i.giphy.com/l3nWhI38IWDofyDrW.webp */
+#FormContainer{
+	/*background-color: #ffffff!important;*/
+	background-image: url("https://i.giphy.com/l3nWhI38IWDofyDrW.webp")!important; /* ide kell a link helyere a kepet betenni */
+	background-repeat: no-repeat;
+	/*background-attachment: fixed;*/
+	background-position: right bottom;
+	background-size: 8%;
+}
+

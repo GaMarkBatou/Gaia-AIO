@@ -1,0 +1,11 @@
+/* BaseTableHeader{
+	width: 95px!important;
+}
+
+#T536870914 .col{
+	width: 95px!important;
+}*/
+
+BaseTableCellOdd, BaseTableCellOddColor, BaseTableStaticText{
+	width: 95px!important;
+}

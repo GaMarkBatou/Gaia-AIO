@@ -1,0 +1,31 @@
+  "background": {
+    "service_worker": "background.js"
+  },
+
+
+  "options_page": "options.html",
+
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS%3AMain/*"], 
+      "js": ["Hephaistos/closertime.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS:Main/*"], 
+      "js": ["Hephaistos/closertime.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS%3AMain/*"], 
+      "js": ["Hephaistos/closertime.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS:Main/*"], 
+      "js": ["Hephaistos/closertime.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS%3AMain/Web/*"], 
+      "js": ["Hephaistos/closertime.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS:Main/Web/*"], 
+      "js": ["Hephaistos/closertime.js"]
+    },
