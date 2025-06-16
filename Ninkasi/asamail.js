@@ -9,25 +9,27 @@ var ttKlasseA = document.getElementById("arid_WIN_0_536871498").value.trim().sub
 		newElementA.style.position = "absolute";
 		newElementA.style.zIndex = "99998";
 		newElementA.style.top = "30px";
-		newElementA.style.left = "775px";
-		newElementA.style.width = "50px";
-		newElementA.style.height = "50px";
+		newElementA.style.left = "1140px";
+		newElementA.style.width = "30px";
+		newElementA.style.height = "30px";
         newElementA.innerHTML = "<button id='asamailButton' type='button' title='Asahi Mail'>AM</button>";
 
 
     // Set a timeout to wait for 5 seconds (5000 milliseconds)
-    setTimeout(executeAfterDelay, 10000);
+    setTimeout(executeAfterDelay, 8000);
 	
     function executeAfterDelay() {
        // console.log("5 seconds have passed!");
-	   console.log("a-mail");
+	   //console.log("a-mail");
 		kozernCustomer = document.getElementById("arid_WIN_0_536871994").value.trim(); 
 		kritiKritic = document.getElementById("arid_WIN_0_536872215").value.trim(); 
 		wichTung = document.getElementById("arid_WIN_0_536871225").value.trim(); 
 		ttidTicket = document.getElementById("arid_WIN_0_1").value.trim(); 
 		ttKlasseA = document.getElementById("arid_WIN_0_536871498").value.trim().substring(0, 4);
+		
+		
 
-        if (kozernCustomer == "Asahi Europe Ltd" && (kritiKritic == "Medium" || kritiKritic == "Low") && (wichTung == "1" || wichTung == "2")&& ttKlasseA == "Main") {
+        if (kozernCustomer == "Asahi Europe Ltd" && ttKlasseA == "Main") {
             //console.log("asahi-if-ok");
             document.getElementById('FormContainer').appendChild(newElementA);
 

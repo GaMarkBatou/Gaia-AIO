@@ -1,11 +1,11 @@
 var newElement = document.createElement("div");
 		newElement.id = "enthunt";
 		newElement.style.position = "absolute";
-		newElement.style.zIndex = "99999";
+		newElement.style.zIndex = "99990";
 		newElement.style.top = "30px";
 		newElement.style.left = "190px";
-		newElement.style.width = "50px";
-		newElement.style.height = "50px";
+		newElement.style.width = "30px";
+		newElement.style.height = "30px";
         newElement.innerHTML = "<button id='enthunt' type='button'>Ticket</button>";
 	document.getElementById('FormContainer').appendChild(newElement);	
 	/* FormApp--FormContainer */

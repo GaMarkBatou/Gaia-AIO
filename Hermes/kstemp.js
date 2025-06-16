@@ -99,6 +99,11 @@
         const selectedOption = document.getElementById("ksDropdown").value;
 
         document.getElementById("arid_WIN_0_536871782").value = selectedOption;
+		navigator.clipboard.writeText(selectedOption);
+		
+		
+		var textAreaNotiz = document.getElementById("arid_WIN_0_536871782");
+		simulateUserInteraction(textAreaNotiz);
 		
     });
 

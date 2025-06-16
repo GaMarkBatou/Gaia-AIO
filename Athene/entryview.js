@@ -1,18 +1,18 @@
-var newElement = document.createElement("div");
-	newElement.id = "eviewer";
-	newElement.style.position = "absolute";
-	newElement.style.zIndex = "99999";
-	newElement.style.top = "30px";
-	newElement.style.left = "682px";
-	newElement.style.width = "25px";
-	newElement.style.height = "25px";
-    newElement.innerHTML = "<button id='eviewstart' type='button' title='Entry Viewer'>=></button>";
+var newWievWindow = document.createElement("div");
+	newWievWindow.id = "eviewer";
+	newWievWindow.style.position = "absolute";
+	newWievWindow.style.zIndex = "99999";
+	newWievWindow.style.top = "30px";
+	newWievWindow.style.left = "682px";
+	newWievWindow.style.width = "25px";
+	newWievWindow.style.height = "25px";
+    newWievWindow.innerHTML = "<button id='eviewstart' type='button' title='Entry Viewer'>=></button>";
 
-	newElement.style.setProperty('height', '25px', 'important');
-	newElement.style.setProperty('width', '25px', 'important');
+	newWievWindow.style.setProperty('height', '25px', 'important');
+	newWievWindow.style.setProperty('width', '25px', 'important');
 	
 	//eviewstart
-document.getElementById('WIN_0_536871792').appendChild(newElement);	
+document.getElementById('WIN_0_536871792').appendChild(newWievWindow);	
 	/* FormApp--FormContainer */
 	const iddiv = document.getElementById('eviewstart');
 	iddiv.style.setProperty('margin', '1px');

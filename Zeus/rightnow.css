@@ -1,0 +1,8 @@
+.toprightnow {
+	margin-left: 5px; 
+	width: auto; /* Example width */
+	height: 15px; */
+	border: 0px solid black;
+	/* vertical-align: top; */
+	position: relative;
+}

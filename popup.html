@@ -43,25 +43,75 @@
             border: 1px solid #ccc;
             border-radius: 3px;
         }
+		
+		#searchButton{
+			background-color: #db539e;
+		}
+		
+		.divTable{
+			display: table;
+			width: 100%;
+			margin-left: -8px;
+		}
+		.divTableRow {
+			display: table-row;
+		}
+		.divTableHeading {
+			
+			display: table-header-group;
+		}
+		.divTableCell, .divTableHead {
+			border: 0px solid #db539e;
+			display: table-cell;
+			padding: 0px 1px;
+		}
+		.divTableHeading {
+			
+			display: table-header-group;
+			font-weight: bold;
+		}
+		.divTableFoot {
+			
+			display: table-footer-group;
+			font-weight: bold;
+		}
+		.divTableBody {
+			display: table-row-group;
+		}
+		
+		#searchButtonBT{
+			background-color: rgb(107, 186, 239);
+		}
+
     </style>
 </head>
 
   <body>
-	<script src="popup.js"></script>
+	<script src="Athene/popup.js"></script>
+	<script src="Athene/externtt.js"></script>
   
        <!-- Text input and search button -->
 	<div class="container">
         <div class="form-row">
     <form action="/search" method="get">
         <label for="searchInput"></label>
-        <input type="text" id="searchInput" name="q" placeholder="Enter your TT Number">
-        <button type="button" id="searchButton">Search</button>
+		
+		<div class="divTable">
+			<div class="divTableBody">
+				<div class="divTableRow">
+					<div class="divTableCell"><input type="text" id="searchInput" name="q" placeholder="wTTs Number"></div>
+					<div class="divTableCell"><button type="button" id="searchButton">Search</button></div>
+				</div>
+				<div class="divTableRow">
+					<div class="divTableCell"><input type="text" id="searchExtern" name="q" placeholder="Extern Number"></div>
+					<div class="divTableCell"><button type="button" id="searchExternBT">Search</button></div>
+				</div>
+			</div>
+		</div>
 		
     </form>
 	</div>
-
-    
-
+Gaia V1.99
     </div>
 	
   </body>

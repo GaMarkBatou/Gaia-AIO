@@ -5,16 +5,20 @@ var searchValueclosetime2 = document.getElementById("arid_WIN_0_536871397").valu
 document.getElementById("arid_WIN_0_536871869").addEventListener("change", function(){
 	searchValueclosetime1 = document.getElementById("arid_WIN_0_536871869").value.trim(); 
 	document.getElementById("arid_WIN_0_536871397").value = searchValueclosetime1;	
-	const element = document.getElementById('arid_WIN_0_536871397');
-	element.click();
+	
+	const elementct1 = document.getElementById('arid_WIN_0_536871397');
+	simulateUserInteraction(elementct1);
+	elementct1.click();
 
 });
 
 document.getElementById("arid_WIN_0_536871397").addEventListener("change", function(){
 	searchValueclosetime2 = document.getElementById("arid_WIN_0_536871397").value.trim(); 
 	document.getElementById("arid_WIN_0_536871869").value = searchValueclosetime2;	
-	const element = document.getElementById('arid_WIN_0_536871869');
-	element.click();
+	
+	const elementct2 = document.getElementById('arid_WIN_0_536871869');
+	simulateUserInteraction(elementct2);
+	elementct2.click();
 
 });
 
