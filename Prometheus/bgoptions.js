@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('optionsform');
     const input = document.getElementById('bgsaveInput');
 	const input2 = document.getElementById('cssaveInput');
+	const input3 = document.getElementById('ttimesaveInput');
+	const input4 = document.getElementById('tzussaveInput');
     
     // Load saved options
     chrome.storage.local.get('optionbg', (data) => {
@@ -11,12 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	chrome.storage.local.get('optionCustSearc', (data) => {
         input2.value = data.optionCustSearc || '';  // Correct the key name here
     }); 
+	
+	chrome.storage.local.get('optionNotiMin', (data) => {
+        input3.value = data.optionNotiMin || '';  // Correct the key name here
+    }); 
+	
+	chrome.storage.local.get('optionNotiZus', (data) => {
+        input4.value = data.optionNotiZus || '';  // Correct the key name here
+    }); 
 
     // Save options on form submit
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         const optionValue = input.value;
 		const optionValue2 = input2.value;
+		const optionValue3 = input3.value;
+		const optionValue4 = input4.value;
 
         chrome.storage.local.set({ optionbg: optionValue }, () => {
             console.log('Options saved:', optionValue);
@@ -25,6 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		chrome.storage.local.set({ optionCustSearc: optionValue2 }, () => {
             console.log('Options saved:', optionValue2);
         });
+		
+		chrome.storage.local.set({ optionNotiMin: optionValue3 }, () => {
+            console.log('Options saved:', optionValue3);
+        });
+		
+		chrome.storage.local.set({ optionNotiZus: optionValue4 }, () => {
+            console.log('Options saved:', optionValue4);
+        });
+		
 		
 		alert("All data have been saved in the browser!");
 		//createSimpleNotification();

@@ -48,7 +48,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 
+function keepAlive() {
+	console.log("Keep on keeping on.");
+}
 
+// Set the interval to 5000 milliseconds (5 seconds)
+setInterval(keepAlive, 5000);
 
 /* chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'createNotification') {

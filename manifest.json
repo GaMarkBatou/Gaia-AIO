@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Gaia ",
   "description": "All in one solution to wtts",
-  "version": "1.1995.25",
+  "version": "1.1997.34",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -14,11 +14,46 @@
     "service_worker": "background.js"
   },
   "options_page": "options.html",
+ 
   "action": {
     "default_popup": "popup.html",
 	"default_icon": "hello_extensions.png"
   },
   "content_scripts": [
+
+  
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS%3AMain/*"], 
+      "js": ["Aphrodite/tttitle.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS:Main/*"], 
+      "js": ["Aphrodite/tttitle.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS:Main/Web/*"], 
+      "js": ["Aphrodite/tttitle.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS%3AMain/Web/*"], 
+      "js": ["Aphrodite/tttitle.js"]
+    },
+  	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS%3AMain/*"], 
+      "js": ["Aphrodite/tttitle.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS:Main/*"], 
+      "js": ["Aphrodite/tttitle.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS:Main/Web/*"], 
+      "js": ["Aphrodite/tttitle.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS%3AMain/Web/*"], 
+      "js": ["Aphrodite/tttitle.js"]
+    },
   
 	{
       "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/Notificationuebersicht_neu/*"], 

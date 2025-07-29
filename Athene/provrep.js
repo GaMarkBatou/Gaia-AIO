@@ -77,7 +77,7 @@ console.log("cbi0");
 					cityLcProv = document.getElementById("arid_WIN_0_536871000").value.trim(); 
 					straLcProv = document.getElementById("arid_WIN_0_536871002").value.trim(); 
 					
-					bearCID = localStorage.getItem('cid'); 
+					//bearCID = localStorage.getItem('cid'); 
 
 					prov = document.getElementById("arid_WIN_0_536870980").value.trim(); 
 
@@ -85,7 +85,7 @@ console.log("cbi0");
 						sicMail = "FMB.FMB-TS-ITSH-SICEN2@telekom.com";
 					}
 					
-					var urlMail = `mailto:${encodeURIComponent(prov)}?cc=${encodeURIComponent(sicMailProv)}&subject=Ticket opening request || wTTS TT: ${encodeURIComponent(ttidFieldProv)} || EndCustomer: ${encodeURIComponent(customerName)} || Location: ${encodeURIComponent(zipLcProv)} ${encodeURIComponent(cityLcProv)} ${encodeURIComponent(straLcProv)} &body=Dear Team,%0a%0aPlease raise a ticket for us for the following circuit: ${encodeURIComponent(bearCID)}%0a%0aOur monitoring system showing us that this line is completely down since ${encodeURIComponent(beginFieldProv)} MET%0a%0aIf you need any information from us for the ticket opening, please do not hesitate to contact us on the below represented availabilities.%0aPlease revert back to us with your ticket reference and your findings.%0a%0aOur ticket reference: ${encodeURIComponent(ttidFieldProv)}%0aCircuit ID: ${encodeURIComponent(bearCID)}%0aName: ${encodeURIComponent(nameLcProv)}%0aPhone: ${encodeURIComponent(phoneLcProv)}%0aE-mail: ${encodeURIComponent(mailLcProv)}%0a%0aOpening hours of the Customer site: No information yet. Pending on Customer. Normal buseiness hours.%0aSite power conditions: No information yet. Pending on Customer. No power issue.%0aThank you very much for your cooperation.%0a%0a`;
+					var urlMail = `mailto:${encodeURIComponent(prov)}?cc=${encodeURIComponent(sicMailProv)}&subject=Ticket opening request || wTTS TT: ${encodeURIComponent(ttidFieldProv)} || EndCustomer: ${encodeURIComponent(customerName)} || Location: ${encodeURIComponent(zipLcProv)} ${encodeURIComponent(cityLcProv)} ${encodeURIComponent(straLcProv)} &body=Dear Team,%0a%0aPlease raise a ticket for us for the following circuit: ${encodeURIComponent(bearCID)}%0a%0aOur monitoring system showing us that this line is completely down since ${encodeURIComponent(beginFieldProv)} MET%0a%0aIf you need any information from us for the ticket opening, please do not hesitate to contact us on the below represented availabilities.%0aPlease revert back to us with your ticket reference and your findings.%0a%0aOur ticket reference: ${encodeURIComponent(ttidFieldProv)}%0aCircuit ID: ${encodeURIComponent(bearCID)}%0aName: ${encodeURIComponent(nameLcProv)}%0aPhone: ${encodeURIComponent(phoneLcProv)}%0aE-mail: ${encodeURIComponent(mailLcProv)}%0a%0aOpening hours of the Customer site: No information yet. Pending on Customer. Normal business hours.%0aSite power conditions: No information yet. Pending on Customer. No power issue.%0aThank you very much for your cooperation.%0a%0a`;
 					console.log("cbi2");
 				   // console.log(urlMail);
 				   setTimeout(function() {

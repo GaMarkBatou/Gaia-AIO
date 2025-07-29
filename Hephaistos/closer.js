@@ -153,15 +153,16 @@ function closerCheck() {
 
 
 
-/* // setTimeout(executeAfterDelayKost, 10000);
+ setTimeout(executeAfterDelayKost, 10000);
 	
     function executeAfterDelayKost() {
 
-		arid_WIN_0_536871849
+		//arid_WIN_0_536871849
 		document.getElementById("arid_WIN_0_536871849").value = "englisch";	
+		simulateUserInteraction(document.getElementById("arid_WIN_0_536871849"));
 		
 		//setTimeout(executeAfterDelayKost, 3000);
 	}
-	 */
+	 
 	
 	

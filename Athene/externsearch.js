@@ -13,10 +13,10 @@ setTimeout(extTT, 500);
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
 
-        let externTT = getParameterByName('externtt');
-        if (externTT) {
-            externTT = `%${externTT}%`;
-        }
+let externTT = getParameterByName('externtt');
+	if (externTT) {
+		externTT = `%${externTT}%`;
+	}
         //console.log(externTT);
 
 
