@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resizable & Sortable Table</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed; /* necessary for resizing */
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  th {
+    background: #f2f2f2;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+  }
+  th.resizable {
+    position: relative;
+  }
+  th .resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 5px;
+    cursor: col-resize;
+    user-select: none;
+    height: 100%;
+  }
+  th.sorted-asc::after,
+  th.sorted-desc::after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    margin-top: -6px;
+    border: 6px solid transparent;
+  }
+  th.sorted-asc::after {
+    border-bottom-color: black;
+  }
+  th.sorted-desc::after {
+    border-top-color: black;
+  }
+</style>
+</head>
+<body>
+
+<table id="myTable">
+  <thead>
+    <tr>
+      <th class="resizable">Name<div class="resizer"></div></th>
+      <th class="resizable">Age<div class="resizer"></div></th>
+      <th class="resizable">City<div class="resizer"></div></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td>30</td><td>New York</td></tr>
+    <tr><td>Bob</td><td>25</td><td>Los Angeles</td></tr>
+    <tr><td>Charlie</td><td>35</td><td>Chicago</td></tr>
+  </tbody>
+</table>
+
+<script>
+  // Sort table by column index
+  function sortTable(table, colIndex, asc = true) {
+    const tbody = table.tBodies[0];
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const isNumeric = !isNaN(rows[0].cells[colIndex].innerText.trim());
+  
+    rows.sort((a, b) => {
+      let cellA = a.cells[colIndex].innerText.trim();
+      let cellB = b.cells[colIndex].innerText.trim();
+      if (isNumeric) {
+        cellA = Number(cellA);
+        cellB = Number(cellB);
+      }
+      if (cellA < cellB) return asc ? -1 : 1;
+      if (cellA > cellB) return asc ? 1 : -1;
+      return 0;
+    });
+  
+    // Remove old rows
+    while (tbody.firstChild) {
+      tbody.removeChild(tbody.firstChild);
+    }
+    // Append sorted rows
+    rows.forEach(row => tbody.appendChild(row));
+  }
+  
+  // Add sorting functionality to headers
+  const table = document.getElementById('myTable');
+  let sortAsc = true;
+  let lastSortedCol = -1;
+  const headers = table.querySelectorAll('th');
+  
+  headers.forEach((th, index) => {
+    th.addEventListener('click', () => {
+      if (lastSortedCol === index) {
+        sortAsc = !sortAsc; // toggle ascending/descending
+      } else {
+        sortAsc = true;
+      }
+      headers.forEach(h => h.classList.remove('sorted-asc', 'sorted-desc'));
+      th.classList.add(sortAsc ? 'sorted-asc' : 'sorted-desc');
+      sortTable(table, index, sortAsc);
+      lastSortedCol = index;
+    });
+  });
+  
+  // Resizable columns
+  const resizers = document.querySelectorAll('th .resizer');
+  resizers.forEach(function(resizer) {
+    let startX, startWidth, column;
+
+    resizer.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      startX = e.pageX;
+      column = e.target.parentElement;
+      startWidth = column.offsetWidth;
+
+      document.addEventListener('mousemove', resizeColumn);
+      document.addEventListener('mouseup', stopResize);
+    });
+
+    function resizeColumn(e) {
+      const newWidth = startWidth + (e.pageX - startX);
+      if (newWidth > 30) {
+        column.style.width = newWidth + 'px';
+      }
+    }
+
+    function stopResize() {
+      document.removeEventListener('mousemove', resizeColumn);
+      document.removeEventListener('mouseup', stopResize);
+    }
+  });
+</script>
+
+</body>
+</html>

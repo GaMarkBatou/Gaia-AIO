@@ -9,12 +9,34 @@ var newCustB = document.createElement("div");
 	newCustB.style.height = "20px";
 	//newCustB.style.min-width = "20px";
 	//newCustB.classList.add('toprightnow');
-	var element = document.getElementById('WIN_0_536870908'); 
-    newCustB.innerHTML = "<button id='gfInsert' type='button' class='toprightnow' data-text='Georg Fischer Group' title='Insert Georg Fischer'>GF</button><button id='lufiInsert' type='button' class='toprightnow' data-text='Deutsche Lufthansa AG' title='Insert Deutsche Lufthansa'>Lufi</button><button id='voestalpinInsert' type='button' class='toprightnow' data-text='voestalpine AG' title='Insert voestalpine'>Voestalpine</button><button id='rcoInsert' type='button' class='toprightnow' data-text='Continuation Computers Limited' title='Insert RCO'>RCO</button><button id='asahiInsert' type='button' class='toprightnow' data-text='Asahi Europe' title='Insert Asahi'>Asahi</button><button id='fqmlInsert' type='button' class='toprightnow' data-text='First Quantum Minerals' title='Insert fqml'>FQML</button><button id='recipharmInsert' type='button' class='toprightnow' data-text='Recipharm' title='Insert Recipharm'>Recipharm</button><button id='gowlingInsert' type='button' class='toprightnow' data-text='Gowling' title='Insert Gowling'>Gowling</button><button id='boschInsert' type='button' class='toprightnow' data-text='Robert Bosch GmbH' title='Insert Bosch'>Bosch</button><button id='vanderlandeInsert' type='button' class='toprightnow' data-text='Vanderlande Industries B.V.' title='Insert Vanderlande'>Vanderlande</button>";
 	
-	// minta <button id='voestalpinInsert' type='button' class='toprightnow' data-text='voestalpine AG' title='Insert voestalpine'>Voestalpine</button>
 	
+	
+var element = document.getElementById('WIN_0_536870908');
 
+const defaultCustRessOption = "<button id='gfInsert' type='button' class='toprightnow' data-text='Georg Fischer Group' title='Insert Georg Fischer'>GF</button><button id='lufiInsert' type='button' class='toprightnow' data-text='Deutsche Lufthansa AG' title='Insert Deutsche Lufthansa'>Lufi</button><button id='voestalpinInsert' type='button' class='toprightnow' data-text='voestalpine AG' title='Insert voestalpine'>Voestalpine</button><button id='rcoInsert' type='button' class='toprightnow' data-text='Continuation Computers Limited' title='Insert RCO'>RCO</button><button id='asahiInsert' type='button' class='toprightnow' data-text='Asahi Europe' title='Insert Asahi'>Asahi</button><button id='fqmlInsert' type='button' class='toprightnow' data-text='First Quantum Minerals' title='Insert fqml'>FQML</button><button id='recipharmInsert' type='button' class='toprightnow' data-text='Recipharm' title='Insert Recipharm'>Recipharm</button><button id='gowlingInsert' type='button' class='toprightnow' data-text='Gowling' title='Insert Gowling'>Gowling</button><button id='boschInsert' type='button' class='toprightnow' data-text='Robert Bosch GmbH' title='Insert Bosch'>Bosch</button><button id='vanderlandeInsert' type='button' class='toprightnow' data-text='Vanderlande Industries B.V.' title='Insert Vanderlande'>Vanderlande</button>";
+
+loadCustRessOptions();
+
+function loadCustRessOptions() {
+    chrome.storage.local.get(['custRessOption'], function(result) {
+        let custRessOption;
+        if (!result.custRessOption || result.custRessOption.length === 0) {
+            // If missing or empty, save default options into local storage
+            chrome.storage.local.set({ custRessOption: defaultCustRessOption }, function() {
+                console.log('Default options saved to local storage');
+            });
+            custRessOption = defaultCustRessOption;
+        } else {
+            custRessOption = result.custRessOption;
+        }
+
+        newCustB.innerHTML = custRessOption;
+
+    });
+}
+
+	
 setTimeout(exeCustB, 1000);
 		
 	function exeCustB() {	

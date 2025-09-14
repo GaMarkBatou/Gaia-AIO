@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QUBIT - QUick Break idle Timer</title>
+  <link rel="stylesheet" href="leapstyles.css" />
+</head>
+<body>
+
+  <div class="timer" id="breakTimer">
+    <h2>Break</h2>
+    <div class="time-display" id="breakDisplay">
+     <button class="increment" id="breakIncrement">+</button> <span class="minutes">40</span><span class="colon">:</span><span class="seconds">00</span> <button class="decrement" id="breakDecrement">−</button>
+
+    </div>
+    <button class="start" data-timer="break">Start</button>
+	<button class="stop" data-timer="break">Stop</button>
+	<button class="reset" data-timer="break">Reset</button>
+  </div>
+
+  <div class="timer" id="lunchTimer">
+    <h2>Lunch</h2>
+    <div class="time-display" id="lunchDisplay">
+      <span class="minutes">30</span><span class="colon">:</span><span class="seconds">00</span>
+    </div>
+    <button class="start" data-timer="lunch">Start</button>
+	<button class="stop" data-timer="lunch">Stop</button>
+	<button class="reset" data-timer="lunch">Reset</button>
+  </div>
+
+  <div class="timer" id="ticketTimer">
+    <h2>Ticket</h2>
+    <div class="time-display" id="ticketDisplay">
+      <span class="minutes">10</span><span class="colon">:</span><span class="seconds">00</span>
+    </div>
+    <button class="start" data-timer="ticket">Start</button>
+	<button class="stop" data-timer="ticket">Stop</button>
+	<button class="reset" data-timer="ticket">Reset</button>
+  </div>
+
+  <script src="qleap.js"></script>
+</body>
+</html>

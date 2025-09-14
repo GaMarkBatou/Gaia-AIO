@@ -26,12 +26,12 @@ document.getElementById("eviewstart").addEventListener("click", function() {
 	const contentWidth = window.innerWidth;
     const contentHeight = window.innerHeight;
 	const popup536871792_0 = document.getElementById("popup536871792_0");
-	popup536871792_0.style.setProperty('top', '70px', 'important');
-    popup536871792_0.style.setProperty('left', '1193px', 'important');
+	popup536871792_0.style.setProperty('top', '110px', 'important');
+    popup536871792_0.style.setProperty('left', '975px', 'important');
 	/* popup536871792_0.style.width=`calc(${contentWidth}px - 1194px)`;
 	popup536871792_0.style.height=`calc(${contentHeight}px - 78px)`;  */ 
 	setTimeout(function() {
-    popup536871792_0.style.setProperty('width', `calc(${contentWidth}px - 1194px)`, 'important');
+    popup536871792_0.style.setProperty('width', `calc(${contentWidth}px - 975px)`, 'important');
 	popup536871792_0.style.setProperty('height', `calc(${contentHeight}px - 200px)`, 'important');
 	}, 990);
 	popup536871792_0.style.setProperty('width', `calc(${contentWidth}px - 1194px)`, 'important');

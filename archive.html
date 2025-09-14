@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gaia Archive - History of your work.</title>
+<style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif; 
+        }
+
+        .container {
+            max-width: 230px;
+            margin: 0 auto; 
+            padding: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .form-row label {
+            flex: 1;
+        }
+
+        .form-row input[type="text"],
+        .form-row button {
+            flex: 2;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .form-row button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+		
+		#searchButton{
+			background-color: #db539e;
+		}
+		
+		.divTable{
+			display: table;
+			width: 100%;
+			margin-left: -8px;
+		}
+		.divTableRow {
+			display: table-row;
+		}
+		.divTableHeading {
+			
+			display: table-header-group;
+		}
+		.divTableCell, .divTableHead {
+			border: 0px solid #db539e;
+			display: table-cell;
+			padding: 0px 1px;
+		}
+		.divTableHeading {
+			
+			display: table-header-group;
+			font-weight: bold;
+		}
+		.divTableFoot {
+			
+			display: table-footer-group;
+			font-weight: bold;
+		}
+		.divTableBody {
+			display: table-row-group;
+		}
+		
+		#searchButtonBT{
+			background-color: rgb(107, 186, 239);
+		}
+		table {
+		  border-collapse: collapse;
+		  width: 100%;
+		  table-layout: fixed; /* necessary for resizing */
+		}
+		th, td {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		  overflow: hidden;
+		  white-space: nowrap;
+		  text-overflow: ellipsis;
+		}
+		th {
+		  background: #f2f2f2;
+		  cursor: pointer;
+		  position: relative;
+		  user-select: none;
+		}
+		th.resizable {
+		  position: relative;
+		}
+		th .resizer {
+		  position: absolute;
+		  right: 0;
+		  top: 0;
+		  width: 5px;
+		  cursor: col-resize;
+		  user-select: none;
+		  height: 100%;
+		}
+		th.sorted-asc::after,
+		th.sorted-desc::after {
+		  content: '';
+		  position: absolute;
+		  right: 8px;
+		  top: 50%;
+		  margin-top: -6px;
+		  border: 6px solid transparent;
+		}
+		th.sorted-asc::after {
+		  border-bottom-color: black;
+		}
+		th.sorted-desc::after {
+		  border-top-color: black;
+		}
+		.tableTN{
+	width:16%
+	}
+	.tableDT{
+	width:30%
+	}
+	.tableCU{
+	width:44%
+	}
+    </style>
+</head>
+
+<body>
+<script src="Chronos/sidebar.js"></script>
+<script src="Athene/cctable.js"></script>
+<button id="deleteStorage">Delete Archive</button> <button id="reloadStorage">Reload</button>
+<br><br>
+ <table id="myTable">
+    <thead>
+      <tr>
+        <th class="resizable tableTN">T.Number<div class="resizer"></div></th>
+        <th class="resizable tableDT">Date/Time<div class="resizer"></div></th>
+        <th class="resizable tableCU">Customer<div class="resizer"></div></th>
+      </tr>
+    </thead>
+    <tbody id="yourDivId"> 
+    </tbody>
+  </table>
+
+</body>
+
+</html>

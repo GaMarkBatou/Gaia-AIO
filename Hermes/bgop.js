@@ -20,3 +20,5 @@ document.getElementById("wbgsearcb").addEventListener("click", function() {
 		console.log(urlbg);
          window.open(urlbg, "_blank");
     });
+	
+	

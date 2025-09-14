@@ -87,13 +87,59 @@
 		//{ value: '', text: '---------' },
 	  ];
 
-	  // Populate dropdown with options
-	  options.forEach(option => {
+function loadDropdownOptions() {
+    chrome.storage.local.get(['dropdownOptions'], function(result) {
+	  if (!result.dropdownOptions || result.dropdownOptions.length === 0) {
+		// If missing or empty, save default options into local storage
+		chrome.storage.local.set({ dropdownOptions: options }, function() {
+		  console.log('Default options saved to local storage');
+		});
+
+		// Use the default options
+		var dropdownOptions = options;
+	  } else {
+		// Use stored options
+		var dropdownOptions = result.dropdownOptions;
+	  }
+
+  // Now you can use dropdownOptions for your dropdown
+  console.log(dropdownOptions);
+    
+    // Get the dropdown element
+    //const dropdown = document.getElementById('myDropdown');
+
+    // Clear existing options
+   // dropdown.innerHTML = '';
+
+    // Populate dropdown with options
+     dropdownOptions.forEach(function(option) {
+      const optionElement = document.createElement('option');
+      optionElement.value = option.value;
+      optionElement.textContent = option.text;
+      dropdown.appendChild(optionElement);
+    }); 
+	
+	 // Populate dropdown with options
+	/*   options.forEach(option => {
 		const opt = document.createElement('option');
 		opt.value = option.value;
 		opt.textContent = option.text;
 		dropdown.appendChild(opt);
-	  });
+	  }); */  
+
+    console.log('Dropdown options loaded.');
+  });
+}
+	
+	loadDropdownOptions();
+
+	  // Populate dropdown with options - ORIGINAL
+	 /*  options.forEach(option => {
+		const opt = document.createElement('option');
+		opt.value = option.value;
+		opt.textContent = option.text;
+		dropdown.appendChild(opt);
+	  }); */
 	  
     document.getElementById("ksDropdown").addEventListener("change", function() {
         const selectedOption = document.getElementById("ksDropdown").value;

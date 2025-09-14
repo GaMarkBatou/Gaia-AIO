@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (Array.isArray(message.items) && message.items.length > 0) {
       const options = {
         type: "list",
-		iconUrl: chrome.runtime.getURL("images/icon-64.png"),
+		iconUrl: chrome.runtime.getURL("images/alarm.png"),
         title: "Multiple Unbekannts",
         message: "You have multiple notifications:",
         items: message.items.map(item => ({
@@ -45,6 +45,30 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       console.warn("Invalid items array for list notification:", message.items);
     }
   }
+});
+
+// New listener specifically for 'timerEnded' messages
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'timerEnded') {
+    const options = {
+      type: "basic",
+      iconUrl: chrome.runtime.getURL("images/time.png"),
+      title: `Timer is over! ${message.timer}`,
+      message: message.message || 'Timer ended!'
+    };
+
+    chrome.notifications.create('', options, (notificationId) => {
+      if (chrome.runtime.lastError) {
+        console.error("Error creating timerEnded notification:", chrome.runtime.lastError);
+      } else {
+        console.log("TimerEnded notification created with ID:", notificationId);
+      }
+    });
+
+    // No response needed, but explicitly return false to keep channel open
+    return false;
+  }
+  // For other messages, do nothing here, let existing listener handle
 });
 
 
@@ -80,3 +104,31 @@ setInterval(keepAlive, 5000);
   }
 });
  */
+ 
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "openSidePanel") {
+    openSidePanel();
+	console.log("On it.");
+  }
+});
+
+function openSidePanel() {
+  if (chrome.sidePanel) {
+  const sidePanelPath = chrome.runtime.getURL("sidepanel.html");
+  console.log("Attempting to open the side panel with path:", sidePanelPath);
+
+  chrome.sidePanel.setOptions({ enabled: false }) // Ensure we reset the side panel state
+    .then(() => chrome.sidePanel.setOptions({
+      path: sidePanelPath,
+      enabled: true,
+    }))
+    .then(() => {
+      console.log("Side Panel opened successfully!");
+    })
+    .catch((error) => {
+      console.error("Error while toggling Side Panel:", error);
+    });
+} else {
+  console.error("Side Panel API is not available.");
+}
+}

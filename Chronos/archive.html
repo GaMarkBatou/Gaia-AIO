@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+</head>
+
+<body>
+<div id="yourDivId"></div>
+<script>
+function loadDataToDiv() {
+  chrome.storage.local.get(['tthistory'], function(result) {
+    // Get the div element by its ID
+    const div = document.getElementById('yourDivId');
+    
+    if (!div) {
+      console.error('Div element not found');
+      return;
+    }
+    
+    // Check if tthistory exists in storage
+    if (result.tthistory) {
+      // Assuming tthistory is a string or something displayable
+      div.textContent = result.tthistory;
+      
+      // If tthistory is an object/array, you can convert to string like this:
+      // div.textContent = JSON.stringify(result.tthistory, null, 2);
+    } else {
+      div.textContent = 'No data found in tthistory.';
+    }
+  });
+}
+
+// Call this function whenever you want to load the data, e.g. on page load
+document.addEventListener('DOMContentLoaded', loadDataToDiv);
+
+</script>
+</body>
+
+</html>

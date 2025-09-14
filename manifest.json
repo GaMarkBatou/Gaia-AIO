@@ -1,27 +1,102 @@
 {
   "manifest_version": 3,
-  "name": "Gaia ",
-  "description": "All in one solution to wtts",
-  "version": "1.1997.34",
+  "name": "Gaia beta",
+  "description": "1.96 - All in one solution to wtts",
+  "version": "2.0",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
     "64": "images/icon-64.png",
     "128": "images/icon-128.png"
   },
-  "permissions": ["notifications","storage", "activeTab", "scripting"],
+  "permissions": ["notifications","storage", "activeTab", "scripting", "sidePanel", "windows", "tabs"],
     "background": {
     "service_worker": "background.js"
   },
   "options_page": "options.html",
- 
+  "side_panel":  { "default_path": "sidepanel.html" },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["archive.html"],
+      "matches": ["<all_urls>"]
+    },
+	 {
+      "resources": ["controlcenter.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "action": {
     "default_popup": "popup.html",
 	"default_icon": "hello_extensions.png"
   },
   "content_scripts": [
-
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS%3AMain/*"], 
+      "js": ["Chronos/history.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS:Main/*"], 
+      "js": ["Chronos/history.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS:Main/Web/*"], 
+      "js": ["Chronos/history.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS%3AMain/Web/*"], 
+      "js": ["Chronos/history.js"]
+    },
+  	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS%3AMain/*"], 
+      "js": ["Chronos/history.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS:Main/*"], 
+      "js": ["Chronos/history.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS:Main/Web/*"], 
+      "js": ["Chronos/history.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS%3AMain/Web/*"], 
+      "js": ["Chronos/history.js"]
+    },
   
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS%3AMain/*"], 
+      "js": ["Athene/charcounter.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS:Main/*"], 
+      "js": ["Athene/charcounter.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS:Main/Web/*"], 
+      "js": ["Athene/charcounter.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS%3AMain/Web/*"], 
+      "js": ["Athene/charcounter.js"]
+    },
+  	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS%3AMain/*"], 
+      "js": ["Athene/charcounter.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS:Main/*"], 
+      "js": ["Athene/charcounter.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS:Main/Web/*"], 
+      "js": ["Athene/charcounter.js"]
+    },
+	{
+      "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts/eTTS%3AMain/Web/*"], 
+      "js": ["Athene/charcounter.js"]
+    },
+
 	{
       "matches": ["https://wtts.telekom.de/wtts/forms/ars-etts.telekom.de/eTTS%3AMain/*"], 
       "js": ["Aphrodite/tttitle.js"]

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Controll Center</title>
+<style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif; 
+        }
+
+        .container {
+            max-width: 230px;
+            margin: 0 auto; 
+            padding: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .form-row label {
+            flex: 1;
+        }
+
+        .form-row input[type="text"],
+        .form-row button {
+            flex: 2;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .form-row button {
+            background-color: #1E9CD6;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+		
+		#searchButton{
+			background-color: #D61E9C;
+		}
+		
+		.divTable{
+			display: table;
+			width: 100%;
+			margin-left: -8px;
+		}
+		.divTableRow {
+			display: table-row;
+		}
+		.divTableHeading {
+			
+			display: table-header-group;
+		}
+		.divTableCell, .divTableHead {
+			border: 0px solid #db539e;
+			display: table-cell;
+			padding: 0px 1px;
+		}
+		.divTableHeading {
+			
+			display: table-header-group;
+			font-weight: bold;
+		}
+		.divTableFoot {
+			
+			display: table-footer-group;
+			font-weight: bold;
+		}
+		.divTableBody {
+			display: table-row-group;
+		}
+		
+		#searchButtonBT{
+			background-color: rgb(107, 186, 239);
+		}
+		
+		    /* Top-left button */
+    .top-left-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      /* padding: 8px 8px; */
+	  padding: 5px 7px 5px 6px;
+      background-color: #9CD61E;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .top-left-btn:hover {
+      background-color: #85B818;
+    }
+
+    /* Top-right button */
+    .top-right-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 1px 7px 9px 7px;
+      background-color: #1E9CD6;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .top-right-btn:hover {
+      background-color: #1885B8;
+    }
+	
+	.btns {    
+      padding: 8px 16px;
+      background-color: #1E9CD6;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+	
+	.btns:hover {
+      background-color: #1885B8;
+    }
+	
+		
+	table {
+	  border-collapse: collapse;
+	  width: 100%;
+	  table-layout: fixed; /* necessary for resizing */
+	}
+	th, td {
+	  border: 1px solid #ddd;
+	  padding: 2px 8px 2px 8px;
+	  overflow: hidden;
+	  white-space: nowrap;
+	  text-overflow: ellipsis;
+	}
+	th {
+	  background: #f2f2f2;
+	  cursor: pointer;
+	  position: relative;
+	  user-select: none;
+	}
+	th.resizable {
+	  position: relative;
+	}
+	th .resizer {
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  width: 5px;
+	  cursor: col-resize;
+	  user-select: none;
+	  height: 100%;
+	}
+	th.sorted-asc::after,
+	th.sorted-desc::after {
+	  content: '';
+	  position: absolute;
+	  right: 8px;
+	  top: 50%;
+	  margin-top: -6px;
+	  border: 6px solid transparent;
+	}
+	th.sorted-asc::after {
+	  border-bottom-color: black;
+	}
+	th.sorted-desc::after {
+	  border-top-color: black;
+	}
+	.tableTN{
+	width:16%
+	}
+	.tableDT{
+	width:30%
+	}
+	.tableCU{
+	width:44%
+	}
+    </style>
+</head>
+
+<body>
+<script src="Chronos/sidebar.js"></script>
+	<script src="Athene/popup.js"></script>
+	<script src="Athene/externtt.js"></script>
+	<script src="Athene/cctable.js"></script>
+  
+	<div>
+		<button class="top-left-btn" id="openWindow" title="Open in window"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-box-arrow-up-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.364 3.5a.5.5 0 0 1 .5-.5H14.5A1.5 1.5 0 0 1 16 4.5v10a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 3 14.5V7.864a.5.5 0 1 1 1 0V14.5a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5v-10a.5.5 0 0 0-.5-.5H7.864a.5.5 0 0 1-.5-.5"/>
+  <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h5a.5.5 0 0 1 0 1H1.707l8.147 8.146a.5.5 0 0 1-.708.708L1 1.707V5.5a.5.5 0 0 1-1 0z"/>
+</svg></button>
+		<button class="top-right-btn" id="openOptions" title="Options"><b>...</b></button>
+	</div>
+  <br>
+       <!-- Text input and search button -->
+	<div class="container">
+        <div class="form-row">
+    <form action="/search" method="get">
+        <label for="searchInput"></label>
+		
+		<div class="divTable">
+			<div class="divTableBody">
+				<div class="divTableRow">
+					<div class="divTableCell"><input type="text" id="searchInput" name="q" placeholder="wTTs Number"></div>
+					<div class="divTableCell"><button type="button" id="searchButton">Search</button></div>
+				</div>
+				<div class="divTableRow">
+					<div class="divTableCell"><input type="text" id="searchExtern" name="q" placeholder="Extern Number"></div>
+					<div class="divTableCell"><button type="button" id="searchExternBT">Search</button></div>
+				</div>
+			</div>
+		</div>
+		
+    </form>
+	</div>
+    </div>
+<br>
+<center><button id="deleteStorage" class="btns">Delete Archive</button> <button id="reloadStorage" class="btns">Reload</button> <button id="onlineNoti" class="btns">Noti</button> <button id="breakNoti" class="btns">Timer</button></center>
+<br>
+ <table id="myTable">
+    <thead>
+      <tr>
+        <th class="resizable tableTN">T.Number<div class="resizer"></div></th>
+        <th class="resizable tableDT">Date/Time<div class="resizer"></div></th>
+        <th class="resizable tableCU">Customer<div class="resizer"></div></th>
+      </tr>
+    </thead>
+    <tbody id="yourDivId"> 
+    </tbody>
+  </table>
+
+</body>
+
+</html>
