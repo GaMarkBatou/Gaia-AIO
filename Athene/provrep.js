@@ -17,7 +17,6 @@ var sicMailProv = "SIC_SDX_SDWAN@telekom.com";
 var cidfromPOP = localStorage.getItem('cid');
 
 var ttSub = document.getElementById("arid_WIN_0_536871498").value.trim().substring(0, 3);
-var urlMail  ="";
 console.log("cbi0");
 
 	var newElementProv = document.createElement("div");
@@ -44,7 +43,6 @@ console.log("cbi0");
 				document.getElementById("providerReport").addEventListener("click", function() {
 					
 					//arid_WIN_0_536870978
-					bearCID = "";
 					const element = document.getElementById('WIN_0_536870529');
 					element.click();
 					
@@ -67,11 +65,10 @@ console.log("cbi0");
 						//bearCID = localStorage.getItem('cid'); 
 					}
 					
+					}, 2000); 
 					
-					
-					//cidfromPOP = localStorage.getItem('cid');
-					//bearCID = document.getElementById("arid_WIN_0_536870978").value.trim(); 
-					bearCID = cidfromPOP.trim(); 
+					cidfromPOP = localStorage.getItem('cid');
+					bearCID = cidfromPOP;
 					
 					ttidFieldProv = document.getElementById("WIN_0_1").querySelector("textarea").value; // #arid_WIN_0_1 //*[@id="arid_WIN_0_1"] /html/body/div[1]/div[5]/div[6]/textarea
 					beginFieldProv = document.getElementById("arid_WIN_0_536871242").value.trim();  
@@ -88,23 +85,19 @@ console.log("cbi0");
 					//bearCID = localStorage.getItem('cid'); 
 
 					prov = document.getElementById("arid_WIN_0_536870980").value.trim(); 
-					
-					
 
 					if (hotlineField != "TCS.DF.HU.OPS.L1.SDWAN.SDX"){
 						sicMail = "FMB.FMB-TS-ITSH-SICEN2@telekom.com";
 					}
 					
-					urlMail = `mailto:${encodeURIComponent(prov)}?cc=${encodeURIComponent(sicMailProv)}&subject=Ticket opening request || wTTS TT: ${encodeURIComponent(ttidFieldProv)} || EndCustomer: ${encodeURIComponent(customerName)} || Location: ${encodeURIComponent(zipLcProv)} ${encodeURIComponent(cityLcProv)} ${encodeURIComponent(straLcProv)} &body=Dear Team,%0a%0aPlease raise a ticket for us for the following circuit: ${encodeURIComponent(bearCID)}%0a%0aOur monitoring system showing us that this line is completely down since ${encodeURIComponent(beginFieldProv)} MET%0a%0aIf you need any information from us for the ticket opening, please do not hesitate to contact us on the below represented availabilities.%0aPlease revert back to us with your ticket reference and your findings.%0a%0aOur ticket reference: ${encodeURIComponent(ttidFieldProv)}%0aCircuit ID: ${encodeURIComponent(bearCID)}%0aName: ${encodeURIComponent(nameLcProv)}%0aPhone: ${encodeURIComponent(phoneLcProv)}%0aE-mail: ${encodeURIComponent(mailLcProv)}%0a%0aOpening hours of the Customer site: No information yet. Pending on Customer. Normal business hours.%0aSite power conditions: No information yet. Pending on Customer. No power issue.%0aThank you very much for your cooperation.%0a%0a`;
+					var urlMail = `mailto:${encodeURIComponent(prov)}?cc=${encodeURIComponent(sicMailProv)}&subject=Ticket opening request || wTTS TT: ${encodeURIComponent(ttidFieldProv)} || EndCustomer: ${encodeURIComponent(customerName)} || Location: ${encodeURIComponent(zipLcProv)} ${encodeURIComponent(cityLcProv)} ${encodeURIComponent(straLcProv)} &body=Dear Team,%0a%0aPlease raise a ticket for us for the following circuit: ${encodeURIComponent(bearCID)}%0a%0aOur monitoring system showing us that this line is completely down since ${encodeURIComponent(beginFieldProv)} MET%0a%0aIf you need any information from us for the ticket opening, please do not hesitate to contact us on the below represented availabilities.%0aPlease revert back to us with your ticket reference and your findings.%0a%0aOur ticket reference: ${encodeURIComponent(ttidFieldProv)}%0aCircuit ID: ${encodeURIComponent(bearCID)}%0aName: ${encodeURIComponent(nameLcProv)}%0aPhone: ${encodeURIComponent(phoneLcProv)}%0aE-mail: ${encodeURIComponent(mailLcProv)}%0a%0aOpening hours of the Customer site: No information yet. Pending on Customer. Normal business hours.%0aSite power conditions: No information yet. Pending on Customer. No power issue.%0aThank you very much for your cooperation.%0a%0a`;
 					console.log("cbi2");
-					
-					}, 3000); 
 				   // console.log(urlMail);
 				   setTimeout(function() {
 					cidfromPOP = localStorage.getItem('cid');
 					bearCID = cidfromPOP;
 					window.open(urlMail, "_blank");
-					}, 4100); 
+					}, 3000); 
 					bearCID = "";
 				});
 			}

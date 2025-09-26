@@ -9,5 +9,5 @@ function getElementContent() {
     localStorage.setItem('cid', elementContent);
 }
 
-setInterval(getElementContent, 1000);
+setInterval(getElementContent, 500);
 

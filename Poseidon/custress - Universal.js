@@ -14,7 +14,7 @@ var newCustB = document.createElement("div");
 	
 var element = document.getElementById('WIN_0_536870908');
 
-const defaultCustRessOption = "<button id='manInsert' type='button' class='toprightnow' data-text='MAN Truck & Bus SE' title='MAN Truck & Bus SE'>MAN</button><button id='itscInsert' type='button' class='toprightnow' data-text='ITSCare GbR - IT-Services für den Gesundheitsmarkt GbR' title='ITSCare GbR - IT-Services für den Gesundheitsmarkt GbR'>ITSCARE</button><button id='schtInsert' type='button' class='toprightnow' data-text='Schaeffler Technologies AG & Co. KG' title='Schaeffler Technologies AG & Co. KG'>Schaeffler</button><button id='zffInsert' type='button' class='toprightnow' data-text='ZF Friedrichshafen AG' title='ZF Friedrichshafen AG'>ZF</button><button id='bmwInsert' type='button' class='toprightnow' data-text='Bayerische Motoren Werke AG' title='Bayerische Motoren Werke AG'>BMW</button><button id='infosInsert' type='button' class='toprightnow' data-text='Infosys Limited Zweigniederlassung Deutschland' title='Infosys Limited Zweigniederlassung Deutschland'>Infosys</button>";
+const defaultCustRessOption = "<button id='gfInsert' type='button' class='toprightnow' data-text='Georg Fischer Group' title='Insert Georg Fischer'>GF</button>";
 
 loadCustRessOptions();
 
