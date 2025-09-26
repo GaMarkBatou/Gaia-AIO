@@ -9,6 +9,9 @@ var lcname = document.getElementById("arid_WIN_0_536871015").value.trim();
 var lcphone1 = document.getElementById("arid_WIN_0_536871021").value.trim(); 
 var lcphone2 = document.getElementById("arid_WIN_0_536872300").value.trim(); 
 
+var besc = document.getElementById("arid_WIN_0_536870990").value.trim(); 
+
+
 inputNotiz.addEventListener('input', handleInput);
 
 /* function handleInput(event) {
@@ -65,7 +68,11 @@ function handleInput(event) {
     if (/locid/gi.test(replacedValue) && !/\|/.test(replacedValue)) {
         replacedValue = replacedValue.replace(/Locid-/gi, endsIDLOC + " | " + standCityLOC);
     }
-
+	
+	if (/besc/gi.test(replacedValue) && !/besc-/.test(replacedValue)) {
+		replacedValue = replacedValue.replace(/Besc-/gi, besc);
+	}
+	
     //console.log("Replaced value:", replacedValue);
 
     if (inputValue !== replacedValue) {
@@ -86,4 +93,5 @@ inputNotiz.addEventListener('click', function(event) {
 			lcname = document.getElementById("arid_WIN_0_536871015").value.trim(); 
 			lcphone1 = document.getElementById("arid_WIN_0_536871021").value.trim(); 
 			lcphone2 = document.getElementById("arid_WIN_0_536872300").value.trim(); 
+			besc = document.getElementById("arid_WIN_0_536870990").value.trim(); 
 });

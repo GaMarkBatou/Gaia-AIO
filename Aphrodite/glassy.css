@@ -1,0 +1,486 @@
+/*
+ * GlassUI v1.0 - Ultra Glass Effect CSS Library
+ * Automatikusan aktiválódik HTML elemeken betöltés után
+ * Használat: <link rel="stylesheet" href="glass-ui.css">
+ */
+
+/* === GLOBÁLIS BEÁLLÍTÁSOK === */
+* {
+  box-sizing: border-box;
+}
+
+/* Csak font család beállítása, háttér érintetlen marad */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  background-image: url("https://images.unsplash.com/photo-1729575846511-f499d2e17d79?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+/* === AUTOMATIKUS GLASS HATÁSOK === */
+
+/* Gombok - Apple-style glossy effect */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a.btn,
+.button {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px) saturate(160%);
+  -webkit-backdrop-filter: blur(15px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+  display: inline-block;
+  margin: 8px 8px 8px 0;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 8px 2px rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Apple glossy highlights for buttons */
+button::before,
+input[type="button"]::before,
+input[type="submit"]::before,
+input[type="reset"]::before,
+a.btn::before,
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  pointer-events: none;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+a.btn:hover,
+.button:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 0 10px 3px rgba(255, 255, 255, 0.1);
+}
+
+button:hover::before,
+input[type="button"]:hover::before,
+input[type="submit"]:hover::before,
+input[type="reset"]:hover::before,
+a.btn:hover::before,
+.button:hover::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    transparent
+  );
+}
+
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+a.btn:active,
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Input mezők - automatikus glass effect */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+textarea,
+select {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  backdrop-filter: blur(25px) saturate(150%) brightness(1.05);
+  -webkit-backdrop-filter: blur(25px) saturate(150%) brightness(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 15px 20px;
+  color: inherit;
+  font-size: 16px;
+  width: 100%;
+  margin: 10px 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05),
+    0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(128, 128, 128, 0.8);
+  font-weight: 300;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.15),
+    0 6px 25px rgba(0, 0, 0, 0.1),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  transform: scale(1.01);
+}
+
+/* Kártyák és konténerek - Apple-style glossy effect */
+.card,
+article,
+section,
+aside,
+.container,
+.box,
+.panel {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 16px 8px rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Apple-style glossy highlight lines */
+.card::before,
+article::before,
+section::before,
+aside::before,
+.container::before,
+.box::before,
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.card::after,
+article::after,
+section::after,
+aside::after,
+.container::after,
+.box::after,
+.panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8),
+    transparent 50%,
+    rgba(255, 255, 255, 0.3)
+  );
+  pointer-events: none;
+}
+
+.card:hover,
+article:hover,
+section:hover,
+aside:hover,
+.container:hover,
+.box:hover,
+.panel:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 0 20px 10px rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Navigáció - automatikus glass effect */
+nav,
+.navbar,
+header {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  backdrop-filter: blur(40px) saturate(200%) brightness(1.1);
+  -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(1.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  margin: 0 0 30px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+nav a,
+.navbar a,
+header a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 15px;
+  padding: 8px 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover,
+.navbar a:hover,
+header a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal és dialog box-ok */
+.modal,
+dialog,
+.popup,
+.tooltip {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  backdrop-filter: blur(35px) saturate(180%) brightness(1.15);
+  -webkit-backdrop-filter: blur(35px) saturate(180%) brightness(1.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.2),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Listák */
+ul, ol {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 20px 25px;
+  margin: 15px 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+li {
+  color: inherit;
+  margin: 8px 0;
+}
+
+/* Táblázatok */
+table {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  margin: 20px 0;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px 20px;
+  color: inherit;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+
+/* Szöveg elemek - alapértelmezett színek megtartása */
+h1, h2, h3, h4, h5, h6 {
+  color: inherit;
+  margin: 20px 0 15px 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+p {
+  color: inherit;
+  line-height: 1.6;
+  margin: 15px 0;
+}
+
+/* === UTILITY OSZTÁLYOK === */
+
+/* Erős glass effect */
+.glass-strong {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  ) !important;
+  backdrop-filter: blur(40px) saturate(220%) brightness(1.2) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(220%) brightness(1.2) !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Gyenge glass effect */
+.glass-light {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  ) !important;
+  backdrop-filter: blur(15px) saturate(120%) brightness(1.05) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(120%) brightness(1.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Glass effect kikapcsolása */
+.no-glass {
+  background: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* === RESZPONZÍV DESIGN === */
+@media (max-width: 768px) {
+  .card,
+  article,
+  section,
+  aside,
+  .container,
+  .box,
+  .panel {
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 16px;
+  }
+  
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  a.btn,
+  .button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  textarea,
+  select {
+    padding: 12px 16px;
+    font-size: 16px; /* iOS zoom fix */
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* === KOMPATIBILITÁS === */
+
+/* Safari iOS fix */
+@supports (-webkit-backdrop-filter: blur(1px)) {
+  .glass-card,
+  button,
+  input,
+  textarea,
+  select,
+  .card,
+  article,
+  section,
+  nav,
+  .modal {
+    -webkit-backdrop-filter: var(--backdrop-filter, blur(25px) saturate(180%));
+  }
+}
+
+/* Firefox fallback (nem támogatja a backdrop-filter-t) */
+@-moz-document url-prefix() {
+  button,
+  input,
+  textarea,
+  select,
+  .card,
+  article,
+  section,
+  nav {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+}
+
+/* === PRINT STÍLUSOK === */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+}
