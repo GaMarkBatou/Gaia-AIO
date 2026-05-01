@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	if (oNoti) {
 		oNoti.addEventListener('click', function () {
             const archivelink = chrome.runtime.getURL("Chronos/leap.html");;
-			window.open(archivelink, "_blank", "width=390,height=640");	
+			window.open(archivelink, "_blank", "width=410,height=752");	
         });
 	}
 });
@@ -117,6 +117,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		opeOpt.addEventListener('click', function () {
             const archivelink = chrome.runtime.getURL("options.html");;
 			window.open(archivelink, "_blank", "width=1250,height=940");	
+        });
+	}
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+	const opeIcs = document.getElementById('openICS');
+	if (opeIcs) {
+		opeIcs.addEventListener('click', function () {
+            const icslink = chrome.runtime.getURL("iCS.html");;
+			window.open(icslink, "_blank", "width=1250,height=360");	
         });
 	}
 });

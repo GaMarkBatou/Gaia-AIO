@@ -158,6 +158,16 @@ chrome.tabs.onCreated.addListener(async (newTab) => {
     }
 
     console.log("Parent tab found:", parentTab);
+	
+	const newTabInfo = await chrome.tabs.get(newTab.id);
+    // Ellenőrizni kell, hogy mind a szülő, mind az új tab URL-je tartalmazza a kívánt szöveget
+    const isParentValid = parentTab.url.includes("https://wtts.telekom.de") && parentTab.url.includes("Main");
+    const isNewTabValid = newTabInfo.url.includes("https://wtts.telekom.de") && newTabInfo.url.includes("Main");
+
+    if (!isParentValid || !isNewTabValid) {
+      console.log("Az URL-ek nem felelnek meg a feltételeknek, feldolgozás megszakítva.");
+      return;
+    }
 
 	   // Check if the parent tab is pinned
     if (parentTab.pinned) {

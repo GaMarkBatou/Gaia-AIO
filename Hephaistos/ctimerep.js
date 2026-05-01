@@ -15,10 +15,10 @@ function getCETorCEST() {
 }
 
 
- inputElement.addEventListener('click', function(event) {
+ inputElement.addEventListener('change', function(event) {
 
 		const inputValue = event.target.value;
-		var closuretimeforks = document.getElementById("arid_WIN_0_536871869").value.trim()
+		var closuretimeforks = document.getElementById("arid_WIN_0_536871869").value.trim().slice(0, -3);
 		let replacedValue = inputValue;
 		replacedValue = replacedValue.replace(/XclosureTimeX/gi, closuretimeforks + " "+ getCETorCEST());
 		event.target.value = replacedValue;

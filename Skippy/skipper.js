@@ -149,6 +149,6 @@ let currentFunctionIndex = 0;
 setInterval(runFunctionSequence, 4000);
 setInterval(runNotiRefress, 20000);
 //setTimeout(windowRefres, 40000);
-setTimeout(windowRefres, 300000);
+setTimeout(windowRefres, 170000);
 
 

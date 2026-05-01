@@ -1,36 +1,37 @@
-/* const newDiv = document.createElement("div");
-	newDiv.id = "kstemp";
+chrome.storage.local.get('optionbg', (data) => {
+    if (!data.optionbg) {
 
-	newDiv.innerHTML = `
-		 <select id="ksDropdown">
-        <option value="">Select an option</option>
-		</select>
-		`; */
-		
-/* 		document.getElementById("WIN_0_536998669").insertAdjacentHTML('beforeend', '<select id="ksDropdown">
-        <option value="">Select an option</option>
-		</select>'); 
-*/
-		
-	var newElement = document.createElement("div");
-		newElement.id = "wkst";
-		newElement.style.position = "absolute";
-		newElement.style.zIndex = "99999";
-		newElement.style.top = "30px";
-		newElement.style.left = "825px";
-        newElement.innerHTML = "<select id='ksDropdown'>        <option value=''>Select KS</option>		</select>";
-    //document.getElementById("WIN_0_536998669").appendChild(newElement);
-	//document.body.appendChild(newElement);	
-	document.getElementById('FormContainer').appendChild(newElement);
-		//style="position: absolute; width: 200px; height: 200px; background-color: coral; z-index: 99999; top: 50px; left: 50px;"
-		
+        const defaultValue = ''; 
+        chrome.storage.local.set({ optionbg: defaultValue }, () => {
+            console.log(`Default value '${defaultValue}' set for optionbg.`);
+            
+        });
+    } else {
 
-	  const dropdown = document.getElementById('ksDropdown');
+        console.log('Default BG field');
+    }
+}); //hatterkep egyenlore nem kell vele foglalkozni. 
 
-	  // Hardcoded options array
-	  const options = [
-		{ value: '', text: '----Erstmeldung----' },
-		/* { value: 'Dear Sir or Madam,\n\nWe have recognized a service disturbance on the above component and opened an incident ticket for this issue. Once the initial analysis is completed we will give you an exact description of the error. In accordance with the Service Level Agreement  (SLA) we will keep you informed of the current status and progress. For information or questions you can contact us at anytime. Please state the Ticket ID as reference.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Proactive Erst' },
+chrome.storage.local.get('optionCustSearc', (data) => {
+    if (!data.optionCustSearc) {
+
+        const defaultValue = "<button id='gfInsert' type='button' class='toprightnow' data-text='Georg Fischer Group' title='Insert Georg Fischer'>GF</button>"; // ticket-ubersicht-ben megjeleno szuresek, nem fontos hiszen a user konnyeden tud hozzadni.
+        chrome.storage.local.set({ optionCustSearc: defaultValue }, () => {
+            console.log(`Default value '${defaultValue}' set for optionCustSearc.`);
+            
+        });
+    } else {
+
+        console.log('Default Customer Search field');
+    }
+});
+
+chrome.storage.local.get('dropdownOptions', (data) => {
+    if (!data.dropdownOptions) {
+
+		const ksOptions = [
+		{ value: '', text: '----Erstmeldung----' }, //- KS templates ezek jelennek meg a lenyilo menuben, szerkezd kerlek a csapatodnak megfeleloen.
+		{ value: 'Dear Sir or Madam,\n\nWe have recognized a service disturbance on the above component and opened an incident ticket for this issue. Once the initial analysis is completed we will give you an exact description of the error. In accordance with the Service Level Agreement  (SLA) we will keep you informed of the current status and progress. For information or questions you can contact us at anytime. Please state the Ticket ID as reference.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Proactive Erst' },
 		{ value: 'Dear Sir or Madam,\n\nWith reference to the fault as reported by you, we have opened the above stated trouble ticket. This matter will be directly forwarded to the relevant service unit.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Reactive Erst' },
 		{ value: 'Dear Sir or Madam,\n\nWith reference to the fault reported by you, we have opened the above stated trouble ticket and have started our investigation.\n\nAs soon as we have an update available we will inform you accordingly.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Reactive NP Erst' },
 		{ value: 'Dear Sir or Madam,\n\nPlease be informed that we have proactively detected an outage affecting the following circuit:\n\nMAN Line ID: [full line ID]\nEnd points: [Standort A] - [Standort B]\n\nTherefore we have generated the current Trouble Ticket. The investigation is in progress, we will keep you informed about the proceedings regularly.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'BMAN Proactive Erst' },
@@ -76,94 +77,89 @@
 		{ value: 'Dear Sir or Madam,\n\nWe would like to inform you that the responsible service provider is still looking into the issue.\nUnfortunately, they were unable to reach a permanent solution so far. \n\nIn order to speed up the resolution we have escalated this case.\n\nWe are closely following their progress in the investigation and when we receive an update from their side you will be immediately informed.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Escalation' },
 		
 		{ value: '', text: '----Closing----' },
-		{ value: 'Dear Sir or Madam,\n\nPlease be advised that the fault is no longer visible, and the service is up and running stable since XclosureTimeX. This location is now reachable via our network management system.\n\nIn the next 4 hours we are going to monitor the service for stability. If no issue appears during this time our ticket will automatically be closed.\n\nShould you experience further outages - please do not hesitate to inform us and we will investigate further.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Closing 4h monitor'  },
-		{ value: 'Dear Sir or Madam,\n\nPlease be informed that service is still working properly since XclosureTimeX. The outage reason is still unknown for us and we are in contact with our provider to identify the root cause. As soon as we receive it we will share it with you.\n\nAs the service is stable we are closing our trouble ticket in accordance with our Service Level Agreement.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Closing without RFO' },
-		{ value: 'Dear Sir or Madam,\n\nPlease be informed that the connection has been stabilized and working properly since XclosureTimeX. The outage was caused by a power supply failure on site.\n\nTherefore we are closing this ticket in accordance with our Service Level Agreement.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Power outage' },
+		{ value: 'Dear Sir or Madam,\n\nPlease be advised that the fault is no longer visible, and the service is up and running stable since XclosureTimeX. This location is now reachable via our network management system.\n\nIn the next 4 hours we are going to monitor the service for stability. If no issue appears during this time our ticket will automatically be closed.\n\nShould you experience further outages - please do not hesitate to inform us and we will investigate further.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Closing 4h monitor'  }, // atrtalmaz zaro idopont shortcutot XclosureTimeX
+		{ value: 'Dear Sir or Madam,\n\nPlease be informed that service is still working properly since XclosureTimeX. The outage reason is still unknown for us and we are in contact with our provider to identify the root cause. As soon as we receive it we will share it with you.\n\nAs the service is stable we are closing our trouble ticket in accordance with our Service Level Agreement.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Closing without RFO' },// atrtalmaz zaro idopont shortcutot XclosureTimeX
+		{ value: 'Dear Sir or Madam,\n\nPlease be informed that the connection has been stabilized and working properly since XclosureTimeX. The outage was caused by a power supply failure on site.\n\nTherefore we are closing this ticket in accordance with our Service Level Agreement.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Power outage' },// atrtalmaz zaro idopont shortcutot XclosureTimeX
 		{ value: 'Dear Sir or Madam,\n\nPlease be advised that the appliances are stable, the service is working properly. The alarm has been generated due to a synchronization error issue on the appliances, which did not affect the site.\nTherefore we are closing our trouble ticket.\nIf you need any further assistance or information from us, please let us know. \n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Sync issue -> closing' },
 		{ value: 'Dear Sir or Madam,\n\nWe would like to inform you that we have investigated the reason for the outage with our responsible service unit. In cooperation with them, we have carried out specific tests and checked all of the components supported by our service department.\nThese tests have been proven successful and no errors or faults were detected on any of the equipment supported by us or by our service provider. Despite of a deeper investigation the reason for outage is unknown.\nShould you experience further outages - please do not hesitate to inform us.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'No RFO' },
 		{ value: 'Dear Sir or Madam,\n\nwe would like to inform you, that this location is now reachable again via our network management system. The maintenance work has been successfully finished. The alarming is enabled again for the site. In accordance with the terms of our service level agreement we are now closing this ticket.\n\nBest regards\nDeutsche Telekom\nService Desk', text: 'Wartung closure - Abschlussmeldung' },
-		{ value: 'Dear Sir or Madam,\n\nWe would like to let you know that as we did not receive any feedback from you in the last five days regarding this incident, we assume that the issue is resolved. For this reason we are resolving our ticket on our side.\n\nIf you need any further assistance or information from us, please let us know.\n\nBest regards\n', text: '1 Strike Close' }, */
+		{ value: 'Dear Sir or Madam,\n\nWe would like to let you know that as we did not receive any feedback from you in the last five days regarding this incident, we assume that the issue is resolved. For this reason we are resolving our ticket on our side.\n\nIf you need any further assistance or information from us, please let us know.\n\nBest regards\n', text: '1 Strike Close' },
 		// Converter: https://codepen.io/jsnelders/pen/qBByqQy
 		//{ value: '', text: '---------' },
 	  ];
+        const defaultValue = ksOptions; // 
+        chrome.storage.local.set({ dropdownOptions: defaultValue }, () => {
+            console.log(`Default value '${defaultValue}' set for dropdownOptions.`);
+            
+        });
+    } else {
+        console.log('Default KS field');
+    }
+});
 
-function loadDropdownOptions() {
-    chrome.storage.local.get(['dropdownOptions'], function(result) {
-	  if (!result.dropdownOptions || result.dropdownOptions.length === 0) {
-		// If missing or empty, save default options into local storage
-		chrome.storage.local.set({ dropdownOptions: options }, function() {
-		  console.log('Default options saved to local storage');
-		});
+chrome.storage.local.get('custRessOption', (data) => {
+    if (!data.custRessOption) {
+        // A Ressource ablakban megjeleno ugyfel gombok, altalaban akikre szoktatok manualis jegyet nyitni azokra erdemes, de ez is szerkesztheto szoval erdemes az 5-10 leggyakoribbat.
+        const defaultValue = "<button id='TestaInsert' type='button' class='toprightnow' data-text='European Commission - Secretariat General' title='Insert TestaNG'>TESTAng</button><button id='DPInsert' type='button' class='toprightnow' data-text='DP World Logistics Germany B.V. & Co. KG' title='Insert DP World'>DP World</button><button id='SNXInsert' type='button' class='toprightnow' data-text='Siemens SNX' title='Insert SNX'>Siemens</button><button id='EndressInsert' type='button' class='toprightnow' data-text='Endress + Hauser InfoServe GmbH + Co. KG' title='Insert Endress + Hauser'>Endress + Hauser</button><button id='SHELLInsert' type='button' class='toprightnow' data-text='Shell Downstream Services International B.V.' title='Insert Shell'>SHELL</button><button id='DTGBSBelgiumInsert' type='button' class='toprightnow' data-text='DTGBS Belgium' title='Insert DTGBSBelgium'>DTGBS Belgium</button><button id='MondiInsert' type='button' class='toprightnow' data-text='Mondi AG' title='Insert Mondi'>Mondi AG</button><button id='SICKInsert' type='button' class='toprightnow' data-text='SICK AG' title='Insert SICK'>SICK AG</button><button id='ConstantiaInsert' type='button' class='toprightnow' data-text='Constantia Flexibles Group GmbH' title='Insert Constantia'>Constantia</button><button id='SuperdryInsert' type='button' class='toprightnow' data-text='Superdry PLC' title='Insert Superdry'>Superdry</button><button id='InfosysInsert' type='button' class='toprightnow' data-text='Infosys Limited Zweigniederlassung Deutschland' title='Insert Infosys'>Infosys</button>"; 
+        chrome.storage.local.set({ custRessOption: defaultValue }, () => {
+            console.log(`Default value '${defaultValue}' set for custRessOption.`);
+            
+        });
+    } else {
+ 
+        console.log('Default Customer Ressource');
+    }
+});
 
-		// Use the default options
-		var dropdownOptions = options;
-	  } else {
-		// Use stored options
-		var dropdownOptions = result.dropdownOptions;
-	  }
 
-  // Now you can use dropdownOptions for your dropdown
-  console.log(dropdownOptions);
+chrome.storage.local.get('defaultEmailAddress', (data) => {
+
+        // Default email cim   Erkezni fog a masodlagos email. 
+        const defaultValue = 'FMB.FMB-SICEN1@telekom.com';
+        chrome.storage.local.set({ defaultEmailAddress: defaultValue }, () => {
+            console.log(`Default value '${defaultValue}' set for defaultEmailAddress.`);
+            
+        });
+
+});
+
+chrome.storage.local.get('defaultEmailLim1', (data) => {
+
+        // Lim email 1
+        const defaultValue = 'DL-TS_TCS_DF_OPS_BLS_NEARSHORE01@telekom.com';
+        chrome.storage.local.set({ defaultEmailLim1: defaultValue }, () => {
+            console.log(`Default value '${defaultValue}' set for defaultEmailLim1.`);
+            
+        });
+
+});
+
+chrome.storage.local.get('defaultEmailLim2', (data) => {
+
+        // Lim email 2
+        const defaultValue = 'DeescalationmanagementSOP@telekom.de';
+        chrome.storage.local.set({ defaultEmailLim2: defaultValue }, () => {
+            console.log(`Default value '${defaultValue}' set for defaultEmailLim2.`);
+            
+        });
+
+});
+
+chrome.storage.local.get('defaulCallLC', (data) => {
     
-    // Get the dropdown element
-    //const dropdown = document.getElementById('myDropdown');
+        // Call LC menut befolyasolja, 
+        const defaultValue = "sdwl1";
+        chrome.storage.local.set({ defaulCallLC: defaultValue }, () => {
+            console.log(`Default value '${defaultValue}' set for defaulCallLC.`);
+            
+        });
+    
+}); 
 
-    // Clear existing options
-   // dropdown.innerHTML = '';
-
-    // Populate dropdown with options
-     dropdownOptions.forEach(function(option) {
-      const optionElement = document.createElement('option');
-      optionElement.value = option.value;
-      optionElement.textContent = option.text;
-      dropdown.appendChild(optionElement);
-    }); 
-	
-	 // Populate dropdown with options
-	/*   options.forEach(option => {
-		const opt = document.createElement('option');
-		opt.value = option.value;
-		opt.textContent = option.text;
-		dropdown.appendChild(opt);
-	  }); */  
-
-    console.log('Dropdown options loaded.');
-  });
-}
-	
-	loadDropdownOptions();
-
-	  // Populate dropdown with options - ORIGINAL
-	 /*  options.forEach(option => {
-		const opt = document.createElement('option');
-		opt.value = option.value;
-		opt.textContent = option.text;
-		dropdown.appendChild(opt);
-	  }); */
-	  
-    document.getElementById("ksDropdown").addEventListener("change", function() {
-		var textAreaBesch = document.getElementById("arid_WIN_0_536870990");
-		var textAreaNotiz = document.getElementById("arid_WIN_0_536871782");
-		simulateUserInteraction(textAreaBesch);
-		simulateUserInteraction(textAreaBesch);
-		simulateUserInteraction(textAreaNotiz);
-        const selectedOption = document.getElementById("ksDropdown").value;
-
-        document.getElementById("arid_WIN_0_536871782").value = selectedOption;
-		navigator.clipboard.writeText(selectedOption);
-		
-		//var textAreaNotiz = document.getElementById("arid_WIN_0_536871782");
-		simulateUserInteraction(textAreaNotiz);
-		
-		simulateUserInteraction(textAreaNotiz);
-    });
-
-
-setTimeout(() => {
-	var textAreaBesch01 = document.getElementById("arid_WIN_0_536870990");
-	simulateUserInteraction(textAreaBesch01);
-	console.log('Beschreibung activated.');
-	var textAreaNotiz01 = document.getElementById("arid_WIN_0_536871782");
-	simulateUserInteraction(textAreaNotiz01);
-	console.log('Notiz activated.');
-}, 6000);
+/* chrome.storage.local.get('defaulCallLC', (data) => {
+    input.value = data.defaulCallLC || ''; // Load the value, default to an empty string if `defaulCallLC` is undefined
+});
+ */
+/* chrome.storage.local.get('defaultEmailAddress', (data) => {
+    input.value = data.defaultEmailAddress || ''; // Load the value, default to an empty string if `defaultEmailAddress` is undefined
+}); */

@@ -14,7 +14,7 @@ var newCustB = document.createElement("div");
 	
 var element = document.getElementById('WIN_0_536870908');
 
-const defaultCustRessOption = "<button id='gfInsert' type='button' class='toprightnow' data-text='Georg Fischer Group' title='Insert Georg Fischer'>GF</button><button id='lufiInsert' type='button' class='toprightnow' data-text='Deutsche Lufthansa AG' title='Insert Deutsche Lufthansa'>Lufi</button><button id='voestalpinInsert' type='button' class='toprightnow' data-text='voestalpine AG' title='Insert voestalpine'>Voestalpine</button><button id='rcoInsert' type='button' class='toprightnow' data-text='Continuation Computers Limited' title='Insert RCO'>RCO</button><button id='asahiInsert' type='button' class='toprightnow' data-text='Asahi Europe' title='Insert Asahi'>Asahi</button><button id='fqmlInsert' type='button' class='toprightnow' data-text='First Quantum Minerals' title='Insert fqml'>FQML</button><button id='recipharmInsert' type='button' class='toprightnow' data-text='Recipharm' title='Insert Recipharm'>Recipharm</button><button id='gowlingInsert' type='button' class='toprightnow' data-text='Gowling' title='Insert Gowling'>Gowling</button><button id='boschInsert' type='button' class='toprightnow' data-text='Robert Bosch GmbH' title='Insert Bosch'>Bosch</button><button id='vanderlandeInsert' type='button' class='toprightnow' data-text='Vanderlande Industries B.V.' title='Insert Vanderlande'>Vanderlande</button>";
+const defaultCustRessOption = "<button id='gfInsert' type='button' class='toprightnow' data-text='Georg Fischer Group' title='Insert Georg Fischer'>GF</button>";
 
 loadCustRessOptions();
 

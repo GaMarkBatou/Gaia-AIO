@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ICS File Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+    label {
+      font-weight: bold;
+    }
+    .output {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ICS File Generator</h1>
+  <p>Paste your schedule below (use the provided format from Excel) and click "Generate ICS".</p>
+
+  <label for="schedule">Schedule:</label><br>
+  <textarea id="schedule" placeholder="e.g., .	.	N	N	N	.	T	.	F	S	S	.	.	.	.	.	.	S	S	.	.	.	.	.	T	T	T	.	S	.	."></textarea>
+  
+  <label for="month">Month (YYYY-MM):</label><br>
+  <input type="text" id="month" placeholder="e.g., 2023-11"><br><br>
+
+  <button onclick="generateICS()">Generate ICS</button>
+
+  <div class="output">
+    <a id="downloadLink" style="display: none;" download="schedule.ics">Download ICS</a>
+  </div>
+
+  <script>
+    // Key for schedule symbols:
+    const scheduleKey = {
+      "F": { start: "06:00", end: "14:30", title: "Reggeli" },
+      "F1": { start: "07:00", end: "15:30", title: "Reggeli 7es" },
+      "T": { start: "08:00", end: "16:30", title: "Nappali" },
+      "M": { start: "10:30", end: "19:00", title: "Nap Közepi" },
+      "S": { start: "13:00", end: "21:30", title: "Délutáni" },
+      "N": { start: "21:30", end: "06:00", title: "Éjszakai" }
+    };
+
+    function generateICS() {
+      const scheduleInput = document.getElementById("schedule").value.trim();
+      const monthInput = document.getElementById("month").value.trim();
+      const downloadLink = document.getElementById("downloadLink");
+
+      if (!scheduleInput || !monthInput) {
+        alert("Please fill in both the schedule and month.");
+        return;
+      }
+
+      // Validate month input
+      const monthRegex = /^\d{4}-\d{2}$/;
+      if (!monthRegex.test(monthInput)) {
+        alert("Please enter a valid month in the format 'YYYY-MM'.");
+        return;
+      }
+
+      const days = scheduleInput.split(/\t|\s+/); // Handle both tabs (from Excel) and spaces
+      const year = monthInput.split("-")[0];
+      const month = monthInput.split("-")[1];
+      const events = [];
+
+      // Generate events based on the schedule
+      for (let i = 0; i < days.length; i++) {
+        const symbol = days[i].trim();
+        
+        // Check if the symbol matches a valid working shift
+        if (symbol && scheduleKey[symbol]) {
+          const event = createEvent(year, month, i + 1, scheduleKey[symbol]);
+          events.push(event);
+        }
+      }
+
+      // Generate ICS content
+      const icsContent = generateICSContent(events);
+
+      // Create downloadable file
+      const blob = new Blob([icsContent], { type: "text/calendar" });
+      const url = URL.createObjectURL(blob);
+
+      // Allow user to download
+      downloadLink.href = url;
+      downloadLink.style.display = "inline";
+      downloadLink.textContent = "Download Schedule (ICS)";
+    }
+
+    function formatDateTimeLocal(year, month, day, time) {
+	  const [hour, minute] = time.split(":");
+	  const date = new Date(year, month - 1, day, hour, minute, 0);  // helyi idő szerint, ne UTC
+	  // Formázás ICS-ben: YYYYMMDDTHHmmss
+	  const pad = (num) => (num < 10 ? "0" + num : num);
+	  return (
+		date.getFullYear().toString() +
+		pad(date.getMonth() + 1) +
+		pad(date.getDate()) +
+		"T" +
+		pad(date.getHours()) +
+		pad(date.getMinutes()) +
+		"00"
+	  );
+	}
+
+	function createEvent(year, month, day, details) {
+	  const start = formatDateTimeLocal(year, month, day, details.start);
+	  let endDay = day;
+	  const [startHour] = details.start.split(":").map(Number);
+	  const [endHour] = details.end.split(":").map(Number);
+
+	  // Ha az end kisebb mint start, az esemény a következő napig tart
+	  if (endHour < startHour) {
+		endDay += 1;
+	  }
+
+	  const end = formatDateTimeLocal(year, month, endDay, details.end);
+
+	  return {
+		uid: `event-${year}${month}${day}-${details.start.replace(":", "")}@example.com`,
+		dtstamp: new Date().toISOString().replace(/-|:|\.\d\d\d/g, ""),
+		summary: details.title,
+		start: start,
+		end: end
+	  };
+	}
+
+
+    function formatDateTime(year, month, day, time) {
+      const [hour, minute] = time.split(":");
+      const date = new Date(Date.UTC(year, month - 1, day, hour, minute));
+
+      return date.toISOString().replace(/-|:|\.\d\d\d/g, "").slice(0, -1) + "Z"; // Format as YYYYMMDDTHHMMSSZ
+    }
+
+    function generateICSContent(events) {
+      let ics = "BEGIN:VCALENDAR\nVERSION:2.0\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\n";
+
+      events.forEach(event => {
+        ics += `BEGIN:VEVENT\n`;
+        ics += `UID:${event.uid}\n`;
+        ics += `DTSTAMP:${event.dtstamp}\n`;
+        ics += `SUMMARY:${event.summary}\n`;
+        ics += `DTSTART:${event.start}\n`;
+        ics += `DTEND:${event.end}\n`;
+        ics += `DESCRIPTION:\n`;
+        ics += `END:VEVENT\n`;
+      });
+
+      ics += "END:VCALENDAR";
+      return ics;
+    }
+  </script>
+</body>
+</html>

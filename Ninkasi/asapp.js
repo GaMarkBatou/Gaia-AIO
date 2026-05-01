@@ -38,6 +38,7 @@ var ttKlasseA = document.getElementById("arid_WIN_0_536871498").value.trim().sub
             document.getElementById("asahiPP").addEventListener("click", function() {
 				
 				ttidTicket = document.getElementById("arid_WIN_0_1").value.trim(); 
+				var trimTTid = ttidTicket.substring(7);
 				ppzipLc = document.getElementById("arid_WIN_0_536871001").value.trim(); 
 				ppcityLc = document.getElementById("arid_WIN_0_536871000").value.trim(); 
 				ppstraLc = document.getElementById("arid_WIN_0_536871002").value.trim(); 
@@ -48,7 +49,7 @@ var ttKlasseA = document.getElementById("arid_WIN_0_536871498").value.trim().sub
 				ppwichTung = document.getElementById("arid_WIN_0_536871225").value.trim(); 
 
 				
-                var urlMailpp = `mailto:support@parkplacetech.com;David-Csaba.Berkes@telekom.com?cc=SIC_SDX_SDWAN@telekom.com&subject=Asahi Europe Ltd || Managed Services ticket request  || wTTS TT: ${encodeURIComponent(ttidTicket)} || Location: ${encodeURIComponent(ppzipLc)} ${encodeURIComponent(ppcityLc)} ${encodeURIComponent(ppstraLc)} || Issue with the following device(s).  &body=CTRL + V`;
+                var urlMailpp = `mailto:support@parkplacetech.com;David-Csaba.Berkes@telekom.com?cc=SIC_SDX_SDWAN@telekom.com&subject=Asahi Europe Ltd || Managed Services ticket request  || DT TT: ${encodeURIComponent(trimTTid)} || Location: ${encodeURIComponent(ppzipLc)} ${encodeURIComponent(ppcityLc)} ${encodeURIComponent(ppstraLc)} || Issue with the following device(s).  &body=CTRL + V`;
 //${encodeURIComponent(ppbesch)}
                 window.open(urlMailpp, "_blank");
 				

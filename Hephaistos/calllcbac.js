@@ -58,41 +58,36 @@ const clcDropdown = document.getElementById('clcDropdown');
 // Function to populate dropdown with options
 function populateDropdownLC() {
   clcDropdown.innerHTML = "<option value=''>Called</option>"; // Clear existing options
-
+  
+  var optionsSelector;
+  var options;
   chrome.storage.local.get('defaulCallLC', (data) => {
-    const optionsSelector = data.defaulCallLC || ''; // Ensure a default empty string if `defaulCallLC` is undefined
-    //console.log(optionsSelector + " optionsSelector Load");
-    
-    let options;
-      if( optionsSelector === "sdwl1" ) {
-		options = [
-			{ value: "Called " + standCityLC + " LC\n-----\n" + lcName + " | " + lcEmail + "\n" + phoneTelefonLC + " - \n" + handyMobileLC + " - ", text: 'LC' },
-			{ value: 'Called LIM\n-----\n+498006648109 / +49694269652990 (2/1)- LIM Informed ', text: 'LIM' },
-			{ value: 'Called Bosch NOC\n-----\n'+ TTkundeLC +'\n+49(711)811-30901 - Ticket is  \n+86(512)67673330 - Ticket is ', text: 'Bosch' },
-		];  
-	  } else if (optionsSelector === "de2") {
-		 options = [
-			    { value: "ASP\n\n " + lcName + "\n" + phoneTelefonLC + " - \n" + handyMobileLC + " - ", text: 'LC' },
-				{ value: 'LIM/TC Leitstand \n +498006648109 / +49694269652990 wurde über CBI High/Critical informiert ', text: 'TCLIM' },
-				{ value: 'DPDHL LIM +49 69 13014 1280 wurde informiert ', text: 'DPLIM' },
-		];	
-	  } else {
-		 options = [
-			{ value: "Called " + standCityLC + " LC\n-----\n" + lcName + " | " + lcEmail + "\n" + phoneTelefonLC + " - \n" + handyMobileLC + " - ", text: 'LC' },
-			{ value: 'Called LIM\n-----\n+498006648109 / +49694269652990 (2/1)- LIM Informed ', text: 'LIM' },
-		];	
-	  }
+		optionsSelector = data.defaulCallLC; // Load the value, default to an empty string if `defaulCallLC` is undefined
+		console.log( optionsSelector + " optionsSelector Load" );
+	});
+  
+  console.log( optionsSelector + " optionsSelector" );
+  if( optionsSelector === "sdwl1" ) {
+	options = [
+		{ value: "Called " + standCityLC + " LC\n-----\n" + lcName + " | " + lcEmail + "\n" + phoneTelefonLC + " - \n" + handyMobileLC + " - ", text: 'LC' },
+		{ value: 'Called LIM\n-----\n+498006648109 / +49694269652990 (2/1)- LIM Informed ', text: 'LIM' },
+		{ value: 'Called Bosch NOC\n-----\n'+ TTkundeLC +'\n+49(711)811-30901 - Ticket is  \n+86(512)67673330 - Ticket is ', text: 'Bosch' },
+	];  
+  } else {
+	 options = [
+		{ value: "Called " + standCityLC + " LC\n-----\n" + lcName + " | " + lcEmail + "\n" + phoneTelefonLC + " - \n" + handyMobileLC + " - ", text: 'LC' },
+		{ value: 'Called LIM\n-----\n+498006648109 / +49694269652990 (2/1)- LIM Informed ', text: 'LIM' },
+	];
+  }
 
-    options.forEach(option => {
-      const opt = document.createElement('option');
-      opt.value = option.value;
-      opt.textContent = option.text;
-      clcDropdown.appendChild(opt);
-      //console.log("dropdown lc created ");
-    });
+  options.forEach(option => {
+    const opt = document.createElement('option');
+    opt.value = option.value;
+    opt.textContent = option.text;
+    clcDropdown.appendChild(opt);
+	//console.log("dropdown lc created ");
   });
 }
-
 
 // Initial population of the dropdown
 populateDropdownLC();
@@ -101,7 +96,6 @@ populateDropdownLC();
 clcDropdown.addEventListener("click", function() {
   updateLcDetails();
   populateDropdownLC();
-  
   //console.log("LC updated ");
 });
 
@@ -110,7 +104,6 @@ clcDropdown.addEventListener("change", function() {
   updateLcDetails();
   const selectedOption = clcDropdown.value;
   document.getElementById("arid_WIN_0_536871782").value = selectedOption;
-  simulateUserInteraction(document.getElementById("arid_WIN_0_536871782"));
  //console.log("Option selected and pasted: " + selectedOption);
 });
 

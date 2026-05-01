@@ -153,7 +153,7 @@ function closerCheck() {
 
 
 
- setTimeout(executeAfterDelayKost, 10000);
+ //setTimeout(executeAfterDelayKost, 10000);
 	
     function executeAfterDelayKost() {
 
@@ -165,4 +165,15 @@ function closerCheck() {
 	}
 	 
 	
+chrome.storage.local.get('defaulCallLC', (data) => {
+	const optionsSelectorMailBlank = data.defaulCallLC || '';
+	if( optionsSelectorMailBlank === "sdwl1" ) {
+		setTimeout(executeAfterDelayKost, 10000);
+	} else if (optionsSelectorMailBlank === "de2") {
+		console.log("Do nothing");
+	} else {
+		setTimeout(executeAfterDelayKost, 10000);
+	}
+
+});
 	

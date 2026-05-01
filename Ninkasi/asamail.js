@@ -25,6 +25,7 @@ var ttKlasseA = document.getElementById("arid_WIN_0_536871498").value.trim().sub
 		kritiKritic = document.getElementById("arid_WIN_0_536872215").value.trim(); 
 		wichTung = document.getElementById("arid_WIN_0_536871225").value.trim(); 
 		ttidTicket = document.getElementById("arid_WIN_0_1").value.trim(); 
+		var trimTTid = ttidTicket.substring(7);
 		ttKlasseA = document.getElementById("arid_WIN_0_536871498").value.trim().substring(0, 4);
 		
 		
@@ -34,7 +35,7 @@ var ttKlasseA = document.getElementById("arid_WIN_0_536871498").value.trim().sub
             document.getElementById('FormContainer').appendChild(newElementA);
 
             document.getElementById("asamailButton").addEventListener("click", function() {
-                var urlMail = `mailto:Szilvia.Horak-Salamon@telekom.com;Mate.Nagy@telekom.com?cc=SIC_SDX_SDWAN@telekom.com&subject=Reactive incident (P${encodeURIComponent(wichTung)}) || wTTS TT: ${encodeURIComponent(ttidTicket)} || Customer: Asahi Europe Ltd&body=Dear Management, %0a
+                var urlMail = `mailto:Szilvia.Horak-Salamon@telekom.com;Mate.Nagy@telekom.com?cc=SIC_SDX_SDWAN@telekom.com&subject=Reactive incident (P${encodeURIComponent(wichTung)}) || DT TT: ${encodeURIComponent(trimTTid)} || Customer: Asahi Europe Ltd&body=Dear Management, %0a
 Please be advised that we received a reactive Wichtung ${encodeURIComponent(wichTung)} incident from the customer: ${encodeURIComponent(ttidTicket)}`;
 
                // console.log(urlMail);

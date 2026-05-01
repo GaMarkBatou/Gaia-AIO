@@ -9,7 +9,7 @@ const inputAsaiGib3 = document.getElementById('editor');
     function executeAfterDelay() {
 		kozernCustomerGib = document.getElementById("arid_WIN_0_536871994").value.trim(); 
 		quelleGib = document.getElementById("arid_WIN_0_536870915").value.trim(); 
-		if (kozernCustomerGib === "Asahi Europe Ltd" && quelleGib === "TT-BUS"){
+		if (quelleGib === "TT-BUS"){
 			let text = inputAsaiGib.value;
 			let replacedText = text.replace(/\\r\\n/g, '\n');
 			inputAsaiGib.value = replacedText;

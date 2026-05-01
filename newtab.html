@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab</title>
+  <link rel="stylesheet" href="Hera/newtab.css">
+  <link rel="stylesheet" href="Hera/glassy.css">
+  <style>
+  	
+	table {
+		margin: 0px 0px!important;
+		
+	}
+  </style>
+</head>
+<body>
+  <div class="background-layer"></div>
+
+  <div class="content-wrapper">
+	<h1></h1>
+    <!-- Google Search Bar -->
+    <div class="search">
+      <input type="text" id="search-bar" placeholder="Search Google or type a URL">
+    </div>
+	<div class="search">
+      <input type="text" id="searchInput" name="q" placeholder="Search wTTs Number">
+    </div>
+	<div class="search">
+      <input type="text" id="searchExtern" name="q" placeholder="Search Extern Number">
+    </div>
+	
+	<!-- <input type="text" id="searchInput" name="q" placeholder="wTTs Number"> -->
+
+    <!-- Shortcuts Section -->
+    <div class="shortcuts">
+      <div class="shortcut">
+        <button id="deleteStorage" class="btns">Delete<br>Archive</button> <br> <button id="reloadStorage" class="btns">Reload</button>
+      </div>
+      <div class="shortcut-archive glass-light">
+         <table id="myTable" class="glass-light" >
+			<thead>
+			  <tr>
+				<th class="resizable tableTN">T.Number<div class="resizer"></div></th>
+				<th id="datetimetable" class="resizable tableDT">Date/Time<div class="resizer"></div></th>
+				<th class="resizable tableCU">Customer<div class="resizer"></div></th>
+			  </tr>
+			</thead>
+			<tbody id="yourDivId"> 
+			</tbody>
+		  </table>
+      </div>
+      <div class="shortcut">
+        <button id="openLinkButton" class="btns btnspanic">Panic</button>
+      </div>
+      <!-- Add more shortcuts as needed -->
+    </div>
+  </div>
+
+  <div class="background-settings">
+    <input type="file" id="bg-upload" accept="image/*" style="display: none;"><br>
+    <button id="set-bg">Set Background</button>
+  </div>
+
+  <script src="Hera/newtab.js"></script>
+  <script src="Hera/popup.js"></script>
+	<script src="Hera/externtt.js"></script>
+	<script src="Chronos/sidebar.js"></script>
+	<script src="Athene/cctable.js"></script>
+	<script src="Hera/clicker.js"></script>
+</body>
+</html>

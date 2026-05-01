@@ -1,0 +1,47 @@
+body {
+    background-attachment: fixed!important;
+}
+
+.container {
+    max-width: unset!important;
+	margin-top: 25px!important;
+	width: fit-content;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    /* margin-left: auto; */
+    /* margin-right: inherit; */
+    padding-left: inherit!important;
+    padding-right: initial!important;
+}
+
+.divTable {
+    display: table;
+    width: 100%;
+    margin-left: auto!important;
+}
+
+#searchButton {
+    background-color: #D61E9C60!important;
+}
+
+.form-row button {
+    background-color: #1E9CD660!important;
+}
+
+.form-row input[type="text"], .form-row button {
+    padding: 12px!important;
+    border: 0px solid #ccc!important;
+    border-radius: 5px!important;
+}
+
+table {
+    background-color: #ffffff40!important;
+}
+
+form {
+	width: fit-content;
+}

@@ -5,14 +5,15 @@ body {
   display: wrap;
   justify-content: center;
   gap: 20px;
-  
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5);
+	margin: 0px!important;
+padding: 28px;
 }
 .timer {
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 8px #ccc;
+
   padding: 20px;
-  width: 250px;
   min-width: 250px;
   text-align: center;
   margin: 10px;
@@ -62,14 +63,14 @@ button {
   user-select: none;
 }
 button.start {
-  background-color: #9CD61E;
+  background-color: #9CD61E20;
   color: black;
 }
 button.stop {
-  background-color: #D61E9C;
+  background-color: #D61E9C20;
   color: white;
 }
 button.reset {
-  background-color: #1E9CD6;
+  background-color: #1E9CD620;
   color: white;
 }

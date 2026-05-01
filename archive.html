@@ -2,9 +2,11 @@
 <html>
 <head>
 <title>Gaia Archive - History of your work.</title>
+<link rel="stylesheet" href="Hera/glassy.css">
 <style>
         body {
             font-family: 'Helvetica Neue', sans-serif; 
+			background-attachment: fixed !important;
         }
 
         .container {
@@ -128,27 +130,30 @@
 		  border-top-color: black;
 		}
 		.tableTN{
-	width:16%
+	width:20%
 	}
 	.tableDT{
-	width:30%
+	width:32%
 	}
 	.tableCU{
-	width:44%
+	width:46%
 	}
     </style>
 </head>
 
-<body>
+<body class="background-layer">
 <script src="Chronos/sidebar.js"></script>
 <script src="Athene/cctable.js"></script>
+<script src="Hera/custbg.js"></script>
+<script src="Hera/clicker.js"></script>
+
 <button id="deleteStorage">Delete Archive</button> <button id="reloadStorage">Reload</button>
-<br><br>
+
  <table id="myTable">
     <thead>
       <tr>
         <th class="resizable tableTN">T.Number<div class="resizer"></div></th>
-        <th class="resizable tableDT">Date/Time<div class="resizer"></div></th>
+        <th id="datetimetable" class="resizable tableDT">Date/Time<div class="resizer"></div></th>
         <th class="resizable tableCU">Customer<div class="resizer"></div></th>
       </tr>
     </thead>
