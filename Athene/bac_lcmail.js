@@ -67,34 +67,14 @@ chrome.storage.local.get('defaultEmailAddress', (data) => {
 					notizKS = document.getElementById("arid_WIN_0_536871782").value.trim(); 
 
 
-					/* if (hotlineField != "TCS.DF.HU.OPS.L1.SDWAN.SDX"){
+					if (hotlineField != "TCS.DF.HU.OPS.L1.SDWAN.SDX"){
 						sicMail = "FMB.FMB-TS-ITSH-SICEN2@telekom.com";
-					} */
-					
-					var urlMail
-					
-				chrome.storage.local.get('defaulCallLC', (data) => {
-					const optionsSelectorMailLC = data.defaulCallLC || '';
-					
-					if( optionsSelectorMailLC === "sdwl1" ) {
-						if (hotlineField != "TCS.DF.HU.OPS.L1.SDWAN.SDX"){
-							sicMail = "FMB.FMB-TS-ITSH-SICEN2@telekom.com";
-						}
-						urlMail = `mailto:${encodeURIComponent(lcmail1)};${encodeURIComponent(lcmail2)}?cc=${encodeURIComponent(sicMail)}&subject=Assistance needed || End Customer: ${encodeURIComponent(customerName)}  || DT TT: ${encodeURIComponent(trimTTid)} || Location: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)} &body=Dear ${encodeURIComponent(nameLc)}, %0a${encodeURIComponent(notizKS)}%0a%0a`;
-					} else if (optionsSelectorMailLC === "de2") {
-						if (customerName == "DPWN" || customerName == "Deutsche Post AG"){
-							sicMail = "FMB-SIC-DEB-DPDHL@telekom.com";
-						}
-						urlMail = `mailto:${encodeURIComponent(lcmail1)};${encodeURIComponent(lcmail2)}?cc=${encodeURIComponent(sicMail)}&subject=Kunde: ${encodeURIComponent(customerName)}  || Störung am Standort: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)} || DT TT ${encodeURIComponent(trimTTid)} &body=Sehr geehrte ${encodeURIComponent(nameLc)}, %0a${encodeURIComponent(notizKS)}%0a%0a`;
-					} else {
-						urlMail = `mailto:${encodeURIComponent(lcmail1)};${encodeURIComponent(lcmail2)}?cc=${encodeURIComponent(sicMail)}&subject=Assistance needed || End Customer: ${encodeURIComponent(customerName)}  || DT TT: ${encodeURIComponent(trimTTid)} || Location: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)} &body=Dear ${encodeURIComponent(nameLc)}, %0a${encodeURIComponent(notizKS)}%0a%0a`;
 					}
-				//});
 					
-					//var /* urlMail = `mailto:${encodeURIComponent(lcmail1)};${encodeURIComponent(lcmail2)}?cc=${encodeURIComponent(sicMail)}&subject=Assistance needed || End Customer: ${encodeURIComponent(customerName)}  || DT TT: ${encodeURIComponent(trimTTid)} || Location: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)} &body=Dear ${encodeURIComponent(nameLc)}, %0a${encodeURIComponent(notizKS)}%0a%0a`; */
+					var urlMail = `mailto:${encodeURIComponent(lcmail1)};${encodeURIComponent(lcmail2)}?cc=${encodeURIComponent(sicMail)}&subject=Assistance needed || End Customer: ${encodeURIComponent(customerName)}  || DT TT: ${encodeURIComponent(trimTTid)} || Location: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)} &body=Dear ${encodeURIComponent(nameLc)}, %0a${encodeURIComponent(notizKS)}%0a%0a`;
 					//console.log("cbi2");
 				   // console.log(urlMail);
 					window.open(urlMail, "_blank");
 				});
-			});
+			
 		}

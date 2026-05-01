@@ -387,3 +387,15 @@ div.btnimgdiv{
 	background-size: 8%;
 }
 
+td.BaseTableCellOddColor {
+    background-color: #ffffff00!important;
+}
+
+td.BaseTableCellColor {
+    background-color: #eceaecab!important;
+}
+
+tr.SelPrimary td {
+    background-color: #3D61FF!important;
+    color: #ffffff;
+}

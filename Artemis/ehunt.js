@@ -13,8 +13,8 @@ var newElement = document.createElement("div");
 
 document.getElementById("enthunt").addEventListener("click", function() {
 			if(typeof ClipboardItem === "undefined") {
-			alert("Sorry! This feature is not yet available in the browser you are using.\n\n" +
-				"Selecting the text and pasting it to your email should give you the same result.")
+			alert("Sorry! This feature is not yet available in the browser you are using." +
+				"")
 			return;
 		}
 

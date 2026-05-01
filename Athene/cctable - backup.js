@@ -3,26 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function sortTable(table, colIndex, asc = true) {
     const tbody = table.tBodies[0];
     const rows = Array.from(tbody.querySelectorAll('tr'));
-    
-    // Check if the column contains date data
-    const isDate = !isNaN(Date.parse(rows[0].cells[colIndex].innerText.trim()));
-    const isNumeric = !isDate && !isNaN(rows[0].cells[colIndex].innerText.trim());
+    const isNumeric = !isNaN(rows[0].cells[colIndex].innerText.trim());
 
     rows.sort((a, b) => {
       let cellA = a.cells[colIndex].innerText.trim();
       let cellB = b.cells[colIndex].innerText.trim();
-
-      if (isDate) {
-        // Parse string as a date
-        cellA = new Date(cellA);
-        cellB = new Date(cellB);
-      } else if (isNumeric) {
-        // Parse string as a number
+      if (isNumeric) {
         cellA = Number(cellA);
         cellB = Number(cellB);
       }
-
-      // Compare values
       if (cellA < cellB) return asc ? -1 : 1;
       if (cellA > cellB) return asc ? 1 : -1;
       return 0;
@@ -32,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     while (tbody.firstChild) {
       tbody.removeChild(tbody.firstChild);
     }
-
     // Append sorted rows
     rows.forEach(row => tbody.appendChild(row));
   }

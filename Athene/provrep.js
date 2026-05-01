@@ -1,6 +1,7 @@
 var ttidFieldProv = document.getElementById("WIN_0_1").querySelector("textarea").value; // #arid_WIN_0_1 //*[@id="arid_WIN_0_1"] /html/body/div[1]/div[5]/div[6]/textarea
 var beginFieldProv = document.getElementById("arid_WIN_0_536871242").value.trim();  
 var customerName = document.getElementById("arid_WIN_0_536871994").value.trim(); 
+var hotlineField = document.getElementById("arid_WIN_0_536870951").value.trim(); 
 
 var nameLcProv = document.getElementById("arid_WIN_0_536871015").value.trim(); 
 var phoneLcProv = document.getElementById("arid_WIN_0_536871021").value.trim(); 
@@ -13,11 +14,17 @@ var straLcProv = document.getElementById("arid_WIN_0_536871002").value.trim();
 var bearCID = document.getElementById("arid_WIN_0_536870978").value.trim(); 
 
 var prov = document.getElementById("arid_WIN_0_536870980").value.trim(); 
-var sicMailProv = "SIC_SDX_SDWAN@telekom.com";
+var sicMailProv;
 var cidfromPOP = localStorage.getItem('cid');
 
 var ttSub = document.getElementById("arid_WIN_0_536871498").value.trim().substring(0, 3);
 var urlMail  ="";
+
+chrome.storage.local.get('defaultEmailAddress', (data) => {
+    sicMailProv = data.defaultEmailAddress || ''; // Load the value, default to an empty string if `defaultEmailAddress` is undefined
+});
+
+
 console.log("cbi0");
 
 	var newElementProv = document.createElement("div");
@@ -74,6 +81,7 @@ console.log("cbi0");
 					bearCID = cidfromPOP.trim(); 
 					
 					ttidFieldProv = document.getElementById("WIN_0_1").querySelector("textarea").value; // #arid_WIN_0_1 //*[@id="arid_WIN_0_1"] /html/body/div[1]/div[5]/div[6]/textarea
+					var trimTTid = ttidFieldProv.substring(7);
 					beginFieldProv = document.getElementById("arid_WIN_0_536871242").value.trim();  
 					customerName = document.getElementById("arid_WIN_0_536871994").value.trim(); 
 
@@ -91,11 +99,11 @@ console.log("cbi0");
 					
 					
 
-					if (hotlineField != "TCS.DF.HU.OPS.L1.SDWAN.SDX"){
+					if (hotlineField == "TCS.DF.HU.OPS.L1.EN2"){
 						sicMail = "FMB.FMB-TS-ITSH-SICEN2@telekom.com";
 					}
 					
-					urlMail = `mailto:${encodeURIComponent(prov)}?cc=${encodeURIComponent(sicMailProv)}&subject=Ticket opening request || wTTS TT: ${encodeURIComponent(ttidFieldProv)} || EndCustomer: ${encodeURIComponent(customerName)} || Location: ${encodeURIComponent(zipLcProv)} ${encodeURIComponent(cityLcProv)} ${encodeURIComponent(straLcProv)} &body=Dear Team,%0a%0aPlease raise a ticket for us for the following circuit: ${encodeURIComponent(bearCID)}%0a%0aOur monitoring system showing us that this line is completely down since ${encodeURIComponent(beginFieldProv)} MET%0a%0aIf you need any information from us for the ticket opening, please do not hesitate to contact us on the below represented availabilities.%0aPlease revert back to us with your ticket reference and your findings.%0a%0aOur ticket reference: ${encodeURIComponent(ttidFieldProv)}%0aCircuit ID: ${encodeURIComponent(bearCID)}%0aName: ${encodeURIComponent(nameLcProv)}%0aPhone: ${encodeURIComponent(phoneLcProv)}%0aE-mail: ${encodeURIComponent(mailLcProv)}%0a%0aOpening hours of the Customer site: No information yet. Pending on Customer. Normal business hours.%0aSite power conditions: No information yet. Pending on Customer. No power issue.%0aThank you very much for your cooperation.%0a%0a`;
+					urlMail = `mailto:${encodeURIComponent(prov)}?cc=${encodeURIComponent(sicMailProv)}&subject=Ticket opening request || DT TT: ${encodeURIComponent(trimTTid)} || EndCustomer: ${encodeURIComponent(customerName)} || Location: ${encodeURIComponent(zipLcProv)} ${encodeURIComponent(cityLcProv)} ${encodeURIComponent(straLcProv)} &body=Dear Team,%0a%0aPlease raise a ticket for us for the following circuit: ${encodeURIComponent(bearCID)}%0a%0aOur monitoring system showing us that this line is completely down since ${encodeURIComponent(beginFieldProv)} MET%0a%0aIf you need any information from us for the ticket opening, please do not hesitate to contact us on the below represented availabilities.%0aPlease revert back to us with your ticket reference and your findings.%0a%0aOur ticket reference: ${encodeURIComponent(trimTTid)}%0aCircuit ID: ${encodeURIComponent(bearCID)}%0aName: ${encodeURIComponent(nameLcProv)}%0aPhone: ${encodeURIComponent(phoneLcProv)}%0aE-mail: ${encodeURIComponent(mailLcProv)}%0a%0aOpening hours of the Customer site: No information yet. Pending on Customer. Normal business hours.%0aSite power conditions: No information yet. Pending on Customer. No power issue.%0aThank you very much for your cooperation.%0a%0a`;
 					console.log("cbi2");
 					
 					}, 3000); 

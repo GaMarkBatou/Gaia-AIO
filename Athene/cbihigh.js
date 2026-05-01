@@ -1,4 +1,5 @@
 var cbiField = document.getElementById("arid_WIN_0_536872149").value.trim(); 
+var critField = document.getElementById("arid_WIN_0_536872215").value.trim(); 
 var hotlineField = document.getElementById("arid_WIN_0_536870951").value.trim(); 
 var ttidField = document.getElementById("WIN_0_1").querySelector("textarea").value; // #arid_WIN_0_1 //*[@id="arid_WIN_0_1"] /html/body/div[1]/div[5]/div[6]/textarea
 var customerName = document.getElementById("arid_WIN_0_536871994").value.trim();  
@@ -17,12 +18,27 @@ var ressField; //- var ressField = document.getElementById("arid_WIN_0_536871016
 var slaField = document.getElementById("arid_WIN_0_536870996").value.trim(); 
 var slaRemaining = document.getElementById("arid_WIN_0_536871345").value.trim(); 
 var descriptionField = document.getElementById("arid_WIN_0_536870990").value.trim(); 
+var effbeginn = document.getElementById("arid_WIN_0_536871248").value.trim(); 
+var servicelevel = document.getElementById("arid_WIN_0_536870996").value.trim(); 
+var kssnummer = document.getElementById("arid_WIN_0_536871044").value.trim(); 
 
 //var ttmain = document.getElementById("arid_WIN_0_536871498").value.trim().substring(0, 4);
 
-var limMail1 = "DL-TS_TCS_DF_OPS_BLS_NEARSHORE01@telekom.com";
-var limMail2 = "TC_Leitstand@telekom.de";
-var sicMail = "SIC_SDX_SDWAN@telekom.com";
+var limMail1; //= "DL-TS_TCS_DF_OPS_BLS_NEARSHORE01@telekom.com";
+var limMail2; //= "TC_Leitstand@telekom.de";
+var sicMail;
+
+chrome.storage.local.get('defaultEmailAddress', (data) => {
+    sicMail = data.defaultEmailAddress || ''; // Load the value, default to an empty string if `defaultEmailAddress` is undefined
+});
+
+chrome.storage.local.get('defaultEmailLim1', (data) => {
+    limMail1 = data.defaultEmailLim1 || ''; // Load the value, default to an empty string if `defaultEmailLim1` is undefined
+});
+
+chrome.storage.local.get('defaultEmailLim2', (data) => {
+    limMail2 = data.defaultEmailLim2 || ''; // Load the value, default to an empty string if `defaultEmailLim2` is undefined
+});
 
 var ttMain = document.getElementById("arid_WIN_0_536871498").value.trim().substring(0, 4);
 //console.log("cbi0");
@@ -41,7 +57,7 @@ var ttMain = document.getElementById("arid_WIN_0_536871498").value.trim().substr
 	
        // console.log("5 seconds have passed!");
 	  // console.log("cbi1");
-	   setTimeout(executeCBI, 7000);
+	   setTimeout(executeCBI, 8000);
 		//console.log("cbi2");
 		function executeCBI() {
 			//console.log("cbi3");            arid_WIN_0_536871498
@@ -56,6 +72,7 @@ var ttMain = document.getElementById("arid_WIN_0_536871498").value.trim().substr
 					cbiField = document.getElementById("arid_WIN_0_536872149").value.trim(); 
 					hotlineField = document.getElementById("arid_WIN_0_536870951").value.trim(); 
 					ttidField = document.getElementById("WIN_0_1").querySelector("textarea").value;// #arid_WIN_0_1 //*[@id="arid_WIN_0_1"] /html/body/div[1]/div[5]/div[6]/textarea
+					var trimTTid = ttidField.substring(7);
 					customerName = document.getElementById("arid_WIN_0_536871994").value.trim();  
 					customerNet = document.getElementById("arid_WIN_0_536870936").value.trim();  
 
@@ -80,15 +97,41 @@ var ttMain = document.getElementById("arid_WIN_0_536871498").value.trim().substr
 					slaField = document.getElementById("arid_WIN_0_536870996").value.trim(); 
 					slaRemaining = document.getElementById("arid_WIN_0_536871345").value.trim(); 
 					descriptionField = document.getElementById("arid_WIN_0_536870990").value.trim(); 
-
-					if (hotlineField != "TCS.DF.HU.OPS.L1.SDWAN.SDX"){
-						sicMail = "FMB.FMB-TS-ITSH-SICEN2@telekom.com";
-					}
 					
-					var urlMail = `mailto:${encodeURIComponent(limMail1)};${encodeURIComponent(limMail2)}?cc=${encodeURIComponent(sicMail)}&subject=Nearshore customer || wTTS TT: ${encodeURIComponent(ttidField)} || Customer: ${encodeURIComponent(customerName)} || Wichtung/Severity: ${encodeURIComponent(severityField)} || CBI: ${encodeURIComponent(cbiField)}  &body=Dear Team, %0a%0aPlease be advised that we detected a CBI: ${encodeURIComponent(cbiField)} (eTTS) Incident in the ${encodeURIComponent(hotlineField)}. Below please find the necessary information:%0aTT-ID: ${encodeURIComponent(ttidField)}%0aCustomer: ${encodeURIComponent(customerName)} / ${encodeURIComponent(customerNet)}%0a %0aLocal Contact:%0aName: ${encodeURIComponent(nameLc)}%0aTelefon: ${encodeURIComponent(phoneLc)}%0aE-mail: ${encodeURIComponent(mailLc)}%0aAddress: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)}%0a %0aWichtung: ${encodeURIComponent(severityField)}%0aCBI: ${encodeURIComponent(cbiField)}%0aRessource: ${encodeURIComponent(ressField)}%0aSLA: ${encodeURIComponent(slaField)}%0aRemaining SLA: ${encodeURIComponent(slaRemaining)}%0a %0aBeschreibung: %0a${encodeURIComponent(descriptionField)}%0a%0a`;
+					effbeginn = document.getElementById("arid_WIN_0_536871248").value.trim(); 
+					servicelevel = document.getElementById("arid_WIN_0_536870996").value.trim(); 
+					kssnummer = document.getElementById("arid_WIN_0_536871044").value.trim(); 
+
+					
+					var urlMail;
+					
+				chrome.storage.local.get('defaulCallLC', (data) => {
+					const optionsSelectorHigh = data.defaulCallLC || '';
+					
+					if( optionsSelectorHigh === "sdwl1" ) {
+						if (hotlineField == "TCS.DF.HU.OPS.L1.EN2"){
+							sicMail = "FMB.FMB-TS-ITSH-SICEN2@telekom.com";
+						}
+						urlMail = `mailto:${encodeURIComponent(limMail1)};${encodeURIComponent(limMail2)}?cc=${encodeURIComponent(sicMail)}&subject=Nearshore customer || DT TT: ${encodeURIComponent(trimTTid)} || Customer: ${encodeURIComponent(customerName)} || Wichtung/Severity: ${encodeURIComponent(severityField)} || CBI: ${encodeURIComponent(cbiField)}  &body=Dear Team, %0a%0aPlease be advised that we detected a CBI: ${encodeURIComponent(cbiField)} (eTTS) Incident in the ${encodeURIComponent(hotlineField)}. Below please find the necessary information:%0aTT-ID: ${encodeURIComponent(trimTTid)}%0aCustomer: ${encodeURIComponent(customerName)} / ${encodeURIComponent(customerNet)}%0a %0aLocal Contact:%0aName: ${encodeURIComponent(nameLc)}%0aTelefon: ${encodeURIComponent(phoneLc)}%0aE-mail: ${encodeURIComponent(mailLc)}%0aAddress: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)}%0a %0aWichtung: ${encodeURIComponent(severityField)}%0aCBI: ${encodeURIComponent(cbiField)}%0aRessource: ${encodeURIComponent(ressField)}%0aSLA: ${encodeURIComponent(slaField)}%0aRemaining SLA: ${encodeURIComponent(slaRemaining)}%0a %0aBeschreibung: %0a${encodeURIComponent(descriptionField)}%0a%0a`;  
+						
+					} else if (optionsSelectorHigh === "de2") {
+						if (customerName == "DPWN" || customerName == "Deutsche Post AG"){
+							sicMail = "FMB-SIC-DEB-DPDHL@telekom.com";
+						}
+						urlMail = `mailto:${encodeURIComponent(limMail1)};${encodeURIComponent(limMail2)}?cc=${encodeURIComponent(sicMail)}&subject=ETTS Ticketnummer: ${encodeURIComponent(ttidField)} | Customer: ${encodeURIComponent(customerName)} | SLA: ${encodeURIComponent(servicelevel)} | Standort: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)}  &body=Sehr geehrte Damen und Herren, %0a%0ahiermit möchten wir Sie über folgenden Ausfall informieren:%0a%0aeTTS-Ticketnummer:    ${encodeURIComponent(ttidField)}%0aCustomer:                         ${encodeURIComponent(customerName)} / ${encodeURIComponent(customerNet)}%0aHotline:                               ${encodeURIComponent(hotlineField)}%0aServicelevel:                     ${encodeURIComponent(servicelevel)}%0aLocation:                            ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)} ${encodeURIComponent(cbiField)}%0aEffektiver Beginn:           ${encodeURIComponent(effbeginn)}%0aBeschreibung:%0a${encodeURIComponent(descriptionField)}%0a%0aWichtung:                         ${encodeURIComponent(severityField)}%0aCBI:                                     ${encodeURIComponent(cbiField)}%0aAnsprechpartner:         ${encodeURIComponent(nameLc)} ${encodeURIComponent(phoneLc)}%0aKSS_Nummer:               ${encodeURIComponent(kssnummer)}%0a`;
+						
+					} else {
+						urlMail = `mailto:${encodeURIComponent(limMail1)};${encodeURIComponent(limMail2)}?cc=${encodeURIComponent(sicMail)}&subject=Nearshore customer || DT TT: ${encodeURIComponent(trimTTid)} || Customer: ${encodeURIComponent(customerName)} || Wichtung/Severity: ${encodeURIComponent(severityField)} || CBI: ${encodeURIComponent(cbiField)}  &body=Dear Team, %0a%0aPlease be advised that we detected a CBI: ${encodeURIComponent(cbiField)} (eTTS) Incident in the ${encodeURIComponent(hotlineField)}. Below please find the necessary information:%0aTT-ID: ${encodeURIComponent(trimTTid)}%0aCustomer: ${encodeURIComponent(customerName)} / ${encodeURIComponent(customerNet)}%0a %0aLocal Contact:%0aName: ${encodeURIComponent(nameLc)}%0aTelefon: ${encodeURIComponent(phoneLc)}%0aE-mail: ${encodeURIComponent(mailLc)}%0aAddress: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)}%0a %0aWichtung: ${encodeURIComponent(severityField)}%0aCBI: ${encodeURIComponent(cbiField)}%0aRessource: ${encodeURIComponent(ressField)}%0aSLA: ${encodeURIComponent(slaField)}%0aRemaining SLA: ${encodeURIComponent(slaRemaining)}%0a %0aBeschreibung: %0a${encodeURIComponent(descriptionField)}%0a%0a`;	
+					}
+					window.open(urlMail, "_blank");
+				});
+				//});	
+					/* urlMail = `mailto:${encodeURIComponent(limMail1)};${encodeURIComponent(limMail2)}?cc=${encodeURIComponent(sicMail)}&subject=Nearshore customer || DT TT: ${encodeURIComponent(trimTTid)} || Customer: ${encodeURIComponent(customerName)} || Wichtung/Severity: ${encodeURIComponent(severityField)} || CBI: ${encodeURIComponent(cbiField)}  &body=Dear Team, %0a%0aPlease be advised that we detected a CBI: ${encodeURIComponent(cbiField)} (eTTS) Incident in the ${encodeURIComponent(hotlineField)}. Below please find the necessary information:%0aTT-ID: ${encodeURIComponent(trimTTid)}%0aCustomer: ${encodeURIComponent(customerName)} / ${encodeURIComponent(customerNet)}%0a %0aLocal Contact:%0aName: ${encodeURIComponent(nameLc)}%0aTelefon: ${encodeURIComponent(phoneLc)}%0aE-mail: ${encodeURIComponent(mailLc)}%0aAddress: ${encodeURIComponent(zipLc)} ${encodeURIComponent(cityLc)} ${encodeURIComponent(straLc)}%0a %0aWichtung: ${encodeURIComponent(severityField)}%0aCBI: ${encodeURIComponent(cbiField)}%0aRessource: ${encodeURIComponent(ressField)}%0aSLA: ${encodeURIComponent(slaField)}%0aRemaining SLA: ${encodeURIComponent(slaRemaining)}%0a %0aBeschreibung: %0a${encodeURIComponent(descriptionField)}%0a%0a`; */
+					
+					
 					console.log("cbi2");
 				   // console.log(urlMail);
-					window.open(urlMail, "_blank");
+					//window.open(urlMail, "_blank");
 				});
 			}
 		}
